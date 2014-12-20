@@ -12,9 +12,6 @@
     "morgan": "~1.0.0",
     "serve-favicon": "^2.2.0"
   },
-  "scripts": {
-    "predeploy": "echo im about to deploy"
-  },
   "engines": {
     "node": ">=0.10.0"
   }
