@@ -13,7 +13,7 @@
     "serve-favicon": "^2.2.0"
   },
   "scripts": {
-    "build-js": "HOME=config/ bower install"
+    "predeploy": "echo im about to deploy"
   },
   "engines": {
     "node": ">=0.10.0"
