@@ -14,6 +14,7 @@
     "tests"
   ],
   "dependencies": {
-    "bootstrap.css": "~2.3.2"
+    "threejs": "*",
+    "bootstrap": "~3.3.1"
   }
 }
