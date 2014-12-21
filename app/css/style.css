@@ -1,0 +1,134 @@
+
+* {
+  margin: 0;
+}
+
+body {
+  background-color: #f9f9f9;
+  font-family: RobotoDraft, 'Helvetica Neue', Helvetica, Arial;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  -webkit-touch-callout: none;
+}
+
+.starter-template {
+  padding: 40px 15px;
+  text-align: center;
+}
+
+.box {
+  width: 100%;
+  margin: 10px;
+  box-shadow: 0px 10px 10px #CCCCCC;
+  padding: 20px;
+}
+
+.webgl {
+  height: 500px;
+}
+
+.card {
+  padding: 1.5rem;
+  box-shadow: 0 1px 2px #aaa;
+  background: white;
+  margin: 0 1rem 1rem;
+  border-radius: 3px;
+  user-select: none;
+  animation: fly-in-from-left .5s 1s ease both;
+  transform-origin: top left;
+}
+
+.card:nth-child(even) {
+  animation-name: fly-in-from-right;
+  animation-delay: 1.1s;
+  transform-origin: top right;
+}
+
+@keyframes fly-in-from-left {
+  from {
+    transform: translateY(15rem) rotate(15deg);
+    opacity: 0;
+  }
+}
+
+@keyframes fly-in-from-right {
+  from {
+    transform: translateY(15rem) rotate(-15deg);
+    opacity: 0;
+  }
+}
+
+.card:after {
+  position: absolute;
+  font-size: .9rem;
+  top: 1.5rem;
+  right: 1rem;
+  content: "i";
+  border: thin solid gray;
+  color: gray;
+  width: 1rem;
+  line-height: 1rem;
+  text-align: center;
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.info-box {
+  min-height: calc(100% - 400px);
+  height: auto !important /*min-height hack*/
+height : calc(100 % - 400 px); /*min-height hack*/
+  background-color: red;
+}
+
+#info {
+  color: #3e8f3e;
+  position: absolute;
+  top: 25%;
+  width: 100%;
+  text-align: center;
+  z-index: 100;
+  display: block;
+}
+
+/* Example 1 custom styles */
+#ex1Slider .slider-selection {
+  background: #3e8f3e;
+}
+
+#dial-0 .needle path {
+  fill: beige;
+}
+
+#dial-1 .needle path {
+  fill: #b21f24;
+}
+
+#dial-2 .needle path {
+  fill: steelblue;
+}
+
+circle.label {
+  fill: white;
+}
+
+line.label {
+  stroke: white;
+  stroke-width: 1px;
+}
+
+text.label {
+  font-family: Arial;
+  font-size: 12px;
+  fill: white;
+}
+
+#dial-1 text.label {
+  font-size: 16px;
+}
+
+#dial-2 text.label {
+  font-size: 14px;
+}
