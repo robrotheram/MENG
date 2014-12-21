@@ -64,7 +64,7 @@ function Jet($container) {
 }
 
 
-function changeColor() {
+Jet.prototype.changeColor = function () {
   for (i = 0; i < jetEngine.length; i++) {
     jetEngine[i].material = new THREE.MeshPhongMaterial({
       // light
@@ -74,11 +74,11 @@ function changeColor() {
     });
 
   }
-}
+};
 
-function playPause() {
+Jet.prototype.playPause = function () {
   play = !play;
-}
+};
 
 
 Jet.prototype.addmodel = function (geometry, materials) {
