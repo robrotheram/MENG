@@ -1,0 +1,19 @@
+{
+  "name": "node-test",
+  "version": "0.0.0",
+  "authors": [
+    "robert <robrotheram@gmail.com>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "app/bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap.css": "~2.3.2"
+  }
+}
