@@ -2,9 +2,9 @@ var camera, scene, renderer, fan, shaft, loader, controls, play;
 var jetEngine = [];
 var x = 0;
 var material_texture = new THREE.MeshLambertMaterial({map: THREE.ImageUtils.loadTexture('images/crate.jpg')});
-var texture = THREE.ImageUtils.loadTexture('images/metal2.jpg');
+var texture = THREE.ImageUtils.loadTexture('images/wood.jpg');
 texture.wrapS = texture.wrapT = THREE.RepeatWrapping;
-texture.repeat.set(10, 10);
+
 var play = false;
 var container;
 var $container;
@@ -84,6 +84,7 @@ function Jet($con) {
   scene.add(light);
 
 
+  window.addEventListener('resize', _this.onWindowResize, false);
 
 
   _this.animate();
@@ -217,8 +218,8 @@ Jet.prototype.addmodel = function (geometry, materials) {
 
 Jet.prototype.onWindowResize = function () {
 
-  width = container.width();
-  height = container.height();
+  width = $container.width();
+  height = $container.height();
   renderer.setSize(width, height);
   camera.aspect = width / height;
   camera.updateProjectionMatrix();
@@ -234,10 +235,10 @@ Jet.prototype.animate = function () {
       try {
         jetEngine[0].rotateZ(1);
         jetEngine[1].rotateZ(1);
-        jetEngine[2].rotateZ(10);
-        jetEngine[3].rotateZ(0);
+        jetEngine[2].rotateZ(0);
+        jetEngine[3].rotateZ(1);
         jetEngine[4].rotateZ(1);
-        jetEngine[5].rotateZ(30);
+        jetEngine[5].rotateZ(1);
       } catch (err) {
 
       }
