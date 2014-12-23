@@ -52,14 +52,30 @@ function Jet($con) {
 
   scene = new THREE.Scene();
 
+  EventsControls = new EventsControls(camera, renderer.domElement);
+  EventsControls.displacing = false;
+
+  EventsControls.onclick = function () {
+
+    this.focused.material = new THREE.MeshPhongMaterial({
+      // light
+      map: texture,
+      // dark
+      shininess: 50
+    });
+    console.log(this.focused.name);
+
+  };
+
   loader = new THREE.JSONLoader();
 
-  loader.load("jetengine/fan.json", _this.addmodel);
-  loader.load("jetengine/shaft.json", _this.addmodel);
-  loader.load("jetengine/nose.json", _this.addmodel);
-  loader.load("jetengine/compressor.json", _this.addmodel);
-  loader.load("jetengine/compressor2.json", _this.addmodel);
-  loader.load("jetengine/combustion.json", _this.addmodel);
+  loader.load("jetengine/fan.json", _this.addFan);
+  loader.load("jetengine/shaft.json", _this.addShaft);
+  loader.load("jetengine/nose.json", _this.addNose);
+  loader.load("jetengine/compressor.json", _this.addCompressor);
+  loader.load("jetengine/compressor2.json", _this.addCompressor2);
+  loader.load("jetengine/combustion.json", _this.addCompbustion);
+
 
   var directionalLight = new THREE.DirectionalLight(0xffffff, 0.5);
   directionalLight.position.set(0, 1, 0);
@@ -68,11 +84,92 @@ function Jet($con) {
   scene.add(light);
 
 
-  window.addEventListener('resize', _this.onWindowResize, false);
-  window.addEventListener('click', _this.onMouseMove, false);
+
 
   _this.animate();
 }
+
+
+Jet.prototype.addFan = function (geometry, materials) {
+  var material = new THREE.MeshNormalMaterial();
+  model = new THREE.Mesh(geometry, material);
+  model.scale.set(15, 15, 15);
+  model.name = 'Fan';
+  model.position.set(0, 0, 0);
+  jetEngine[x] = model;
+  scene.add(jetEngine[x]);
+  EventsControls.attach(jetEngine[x]);
+  x++;
+};
+
+Jet.prototype.addNose = function (geometry, materials) {
+  var material = new THREE.MeshNormalMaterial();
+  model = new THREE.Mesh(geometry, material);
+  model.scale.set(15, 15, 15);
+  model.name = 'Nose';
+  model.position.set(0, 0, 0);
+  jetEngine[x] = model;
+  scene.add(jetEngine[x]);
+  EventsControls.attach(jetEngine[x]);
+  x++;
+};
+
+Jet.prototype.addShaft = function (geometry, materials) {
+  var material = new THREE.MeshNormalMaterial();
+  model = new THREE.Mesh(geometry, material);
+  model.scale.set(15, 15, 15);
+  model.name = 'Shaft';
+  model.position.set(0, 0, 0);
+  jetEngine[x] = model;
+  scene.add(jetEngine[x]);
+  EventsControls.attach(jetEngine[x]);
+  x++;
+};
+
+Jet.prototype.addCompressor = function (geometry, materials) {
+  var material = new THREE.MeshNormalMaterial();
+  model = new THREE.Mesh(geometry, material);
+  model.scale.set(15, 15, 15);
+  model.name = 'Compressor';
+  model.position.set(0, 0, 0);
+  jetEngine[x] = model;
+  scene.add(jetEngine[x]);
+  EventsControls.attach(jetEngine[x]);
+  x++;
+};
+
+Jet.prototype.addCompressor2 = function (geometry, materials) {
+  var material = new THREE.MeshNormalMaterial();
+  model = new THREE.Mesh(geometry, material);
+  model.scale.set(15, 15, 15);
+  model.name = 'Compressor2';
+  model.position.set(0, 0, 0);
+  jetEngine[x] = model;
+  scene.add(jetEngine[x]);
+  EventsControls.attach(jetEngine[x]);
+  x++;
+};
+Jet.prototype.addCompbustion = function (geometry, materials) {
+  var material = new THREE.MeshNormalMaterial();
+  model = new THREE.Mesh(geometry, material);
+  model.scale.set(15, 15, 15);
+  model.name = 'Compbustion';
+  model.position.set(0, 0, 0);
+
+  jetEngine[x] = model;
+  scene.add(jetEngine[x]);
+  EventsControls.attach(jetEngine[x]);
+  x++;
+};
+
+
+
+
+
+
+
+
+
 
 
 Jet.prototype.changeColor = function () {
@@ -156,29 +253,33 @@ Jet.prototype.animate = function () {
 
 };
 
+Jet.prototype.dummy = function () {
+  alert("hello");
+};
+
+
 Jet.prototype.onMouseMove = function (e) {
 
   var isHovered = $container.is(":hover");
   console.log(isHovered);
   if (isHovered) {
-    mouseVector = new THREE.Vector3();
-    mouseVector.x = 2 * (e.clientX / width ) - 1;
-    mouseVector.y = 1 - 2 * ( e.clientY / height );
+    var mouse = new THREE.Vector2();
+    mouse.x = ( event.clientX / $('#jetEngine').width() ) * 2 - 1;
+    mouse.y = -( event.clientY / $('#jetEngine').height() ) * 2 + 1;
 
-    var vector = mouseVector.clone().unproject(camera);
-    var direction = new THREE.Vector3(0, 0, -1).transformDirection(camera.matrixWorld);
-    raycaster.set(vector, direction);
-    var intersects = raycaster.intersectObjects(jetEngine);
+    var vector = new THREE.Vector3(mouse.x, mouse.y, 0.5);
+    var pos = camera.position;
+    var ray = new THREE.Raycaster(pos, vector.unproject(camera).sub(camera.position).normalize());
 
-    var intersection = intersects[intersects.length - 1];
-    obj = intersection.object;
+    var intersects = ray.intersectObjects(jetEngine);
+    if (intersects.length > 0) {
+      console.log("touched:" + intersects[0]);
 
-    obj.material = new THREE.MeshPhongMaterial({
-      // light
-      map: texture,
-      // dark
-      shininess: 50
-    });
+      // intersects[0].position.x = 1.1;
+    }
+    else {
+      console.log("not touched");
+    }
   }
 
 
