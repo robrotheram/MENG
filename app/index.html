@@ -101,7 +101,7 @@
     <div id="container" class="card webgl"></div>
     <div class="card">
 
-      <button onclick="jet.playPause()">play</button>
+      <button id="btnPlay" onclick="jet.playPause('#btnPlay')">play</button>
       <button onclick="jet.changeColor()">changecolor</button>
     </div>
 
@@ -128,7 +128,6 @@
 <script src="js/sb-admin-2.js"></script>
 <!-- Include all compiled plugins (below), or include individual files as needed -->
 <script src="bower_components/threejs/build/three.min.js"></script>
-
 <script src="js/loaders/OBJLoader.js"></script>
 <script src="js/loaders/TrackballControls.js"></script>
 <script src="js/jetengine/jet.js"></script>
