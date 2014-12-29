@@ -243,6 +243,19 @@ ul.alert-dropdown {
   margin: 5px;
 }
 
+.materialImg {
+
+  width: 30%;
+  margin: 5px;
+}
+
+@media (min-width: 768px) {
+  .materialImg {
+    width: 80%;
+    margin: 5px;
+
+  }
+}
 .materialImg:hover {
   background-color: #5cb85c;
   border-color: #5cb85c;

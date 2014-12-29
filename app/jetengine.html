@@ -60,28 +60,29 @@
         <br>
         <li align="center" style="text-align:center;width: 100%">
           <h4
-          style="align-content: center; text-align: center;width: 100%;"> Choose Material</h4></li>
+            style="align-content: center; text-align: center;width: 100%; color: #ffffff;"> Choose Material</h4></li>
         <li align="center">
-          <img src="images/metal3.jpg" class="img img-circle img-responsive img-thumbnail materialImg"
-               style="width:80%;"/>
+          <img src="images/metal3.jpg" class="img img-circle img-responsive img-thumbnail materialImg"/>
+        </li>
+        <li align="center" style="text-align: center; width: 100%; color: #ffffff;">
           Steel
         </li>
-
         <li align="center">
-          <img src="images/aluminium.jpg" class="img img-circle img-responsive img-thumbnail materialImg"
-               style="margin:5px;width:80%"/>
+          <img src="images/aluminium.jpg" class="img img-circle img-responsive img-thumbnail materialImg"/>
+        </li>
+        <li align="center" style="text-align: center; width: 100%; color: #ffffff;">
           Aluminium
         </li>
-
         <li align="center">
-          <img src="images/titainum.jpg" class="img img-circle img-responsive img-thumbnail materialImg"
-               style="margin:5px;width:80%"/>
+          <img src="images/titainum.jpg" class="img img-circle img-responsive img-thumbnail materialImg"/>
+        </li>
+        <li align="center" style="text-align: center; width: 100%; color: #ffffff;">
           Titainum
         </li>
-
         <li align="center">
-          <img src="images/wood.jpg" class="img img-circle img-responsive img-thumbnail materialImg"
-               style="margin:5px;width:80%"/>
+          <img src="images/wood.jpg" class="img img-circle img-responsive img-thumbnail materialImg"/>
+        </li>
+        <li align="center" style="text-align: center; width: 100%; color: #ffffff;">
           Wood
         </li>
       </ul>
@@ -306,6 +307,27 @@
         console.log(slideEvt.value);
         g.refresh(slideEvt.value);
       });
+
+
+      $("#ex2").on("slide", function (slideEvt) {
+        g1.value = slideEvt.value;
+        console.log(g1.value);
+        console.log(slideEvt.value);
+        g1.refresh(slideEvt.value);
+      });
+
+      $("#ex3").on("slide", function (slideEvt) {
+        g2.value = slideEvt.value;
+        console.log(g2.value);
+        console.log(slideEvt.value);
+        g2.refresh(slideEvt.value);
+      });
+
+
+
+
+
+
 
       $(document).ready(function () {
         /* Example 1 */
