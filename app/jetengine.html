@@ -62,25 +62,29 @@
           <h4
             style="align-content: center; text-align: center;width: 100%; color: #ffffff;"> Choose Material</h4></li>
         <li align="center">
-          <img src="images/metal3.jpg" class="img img-circle img-responsive img-thumbnail materialImg"/>
+          <img src="images/metal3.jpg" class="img img-circle img-responsive img-thumbnail materialImg"
+               onclick="jet.selectmaterial(this,1)"/>
         </li>
         <li align="center" style="text-align: center; width: 100%; color: #ffffff;">
           Steel
         </li>
         <li align="center">
-          <img src="images/aluminium.jpg" class="img img-circle img-responsive img-thumbnail materialImg"/>
+          <img src="images/aluminium.jpg" class="img img-circle img-responsive img-thumbnail materialImg"
+               onclick="jet.selectmaterial(this,0)"/>
         </li>
         <li align="center" style="text-align: center; width: 100%; color: #ffffff;">
-          Aluminium
+          Nickle
         </li>
         <li align="center">
-          <img src="images/titainum.jpg" class="img img-circle img-responsive img-thumbnail materialImg"/>
+          <img src="images/titainum.jpg" class="img img-circle img-responsive img-thumbnail materialImg"
+               onclick="jet.selectmaterial(this,2)"/>
         </li>
         <li align="center" style="text-align: center; width: 100%; color: #ffffff;">
           Titainum
         </li>
         <li align="center">
-          <img src="images/wood.jpg" class="img img-circle img-responsive img-thumbnail materialImg"/>
+          <img src="images/crate.jpg" class="img img-circle img-responsive img-thumbnail materialImg"
+               onclick="jet.selectmaterial(this,3)"/>
         </li>
         <li align="center" style="text-align: center; width: 100%; color: #ffffff;">
           Wood
@@ -186,7 +190,7 @@
                               src="//www.youtube.com/embed/eA699AKxT7s?rel=0&amp;controls=0&amp;showinfo=0"
                               frameborder="0" allowfullscreen></iframe>
                     </div>
-                    <div class="col-md-7">
+                    <div id="material_info" class="col-md-7">
                       Try-hard lo-fi ennui mixtape, fap American Apparel Helvetica. Tumblr next level Thundercats banjo
                       literally Vice occupy. Ethical chillwave beard meh raw denim, lumbersexual cardigan cold-pressed
                       swag Etsy kale chips Austin. Sartorial master cleanse selfies viral VHS ethical Godard Brooklyn,

@@ -261,6 +261,11 @@ ul.alert-dropdown {
   border-color: #5cb85c;
 }
 
+.materialSelected {
+  background-color: #5cb85c;
+  border-color: #5cb85c;
+}
+
 hr {
   display: block;
 

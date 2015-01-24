@@ -12,6 +12,9 @@ var _this;
 var raycaster;
 var mouseVector;
 
+var oldButton;
+var materialsData;
+
 function Jet($con) {
 
   $container = $con;
@@ -20,6 +23,8 @@ function Jet($con) {
   width = $con.width();
   height = $con.height();
 
+
+  _this.getMaterials();
   container.style.width = width;
   container.style.height = height;
   renderer = new THREE.WebGLRenderer({alpha: true});
@@ -89,6 +94,42 @@ function Jet($con) {
 
   _this.animate();
 }
+
+
+Jet.prototype.getMaterials = function () {
+  $.getJSON("json/materials.json", function (data) {
+    materialsData = data;
+    //alert(materialsData.materials[0].name);
+  });
+
+};
+
+
+Jet.prototype.selectmaterial = function (obj, i) {
+
+  if (oldButton != null) {
+    var typ = document.createAttribute("class");
+    typ.value = "img img-circle img-responsive img-thumbnail materialImg";
+    oldButton.attributes.setNamedItem(typ);
+  }
+
+  var typ = document.createAttribute("class");
+  typ.value = "img img-circle img-responsive img-thumbnail materialImg materialSelected";
+  obj.attributes.setNamedItem(typ);
+  oldButton = obj;
+
+
+  texture = THREE.ImageUtils.loadTexture(materialsData.materials[i].texture_img);
+  texture.wrapS = texture.wrapT = THREE.RepeatWrapping;
+  $("#material_info").html(materialsData.materials[i].description);
+  $("#material_info").append("<hr/><h4>Material Properties</h4>");
+  $("#material_info").append("<b>Melting Point: </b>" + materialsData.materials[i].melting_point + "<br/>");
+  $("#material_info").append("<b>Strength: </b>" + materialsData.materials[i].Strength + "<br/>");
+  $("#material_info").append("<b>Density: </b>" + materialsData.materials[i].Density + "<br/>");
+};
+
+
+
 
 
 Jet.prototype.addFan = function (geometry, materials) {
