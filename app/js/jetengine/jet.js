@@ -74,12 +74,13 @@ function Jet($con) {
 
   loader = new THREE.JSONLoader();
 
-  loader.load("jetengine/fan.json", _this.addFan);
-  loader.load("jetengine/shaft.json", _this.addShaft);
-  loader.load("jetengine/nose.json", _this.addNose);
-  loader.load("jetengine/compressor.json", _this.addCompressor);
-  loader.load("jetengine/compressor2.json", _this.addCompressor2);
-  loader.load("jetengine/combustion.json", _this.addCompbustion);
+  loader.load("jetengine/v2/fan.json", _this.addFan);
+  loader.load("jetengine/v2/shaft.json", _this.addShaft);
+  loader.load("jetengine/v2/nose.json", _this.addNose);
+  loader.load("jetengine/v2/compressor1.json", _this.addCompressor);
+  loader.load("jetengine/v2/compressor2.json", _this.addCompressor2);
+  loader.load("jetengine/v2/combustion.json", _this.addCompbustion);
+  loader.load("jetengine/v2/turbine.json", _this.addTurbine);
 
 
   var directionalLight = new THREE.DirectionalLight(0xffffff, 0.5);
@@ -195,7 +196,7 @@ Jet.prototype.addCompbustion = function (geometry, materials) {
   var material = new THREE.MeshNormalMaterial();
   model = new THREE.Mesh(geometry, material);
   model.scale.set(15, 15, 15);
-  model.name = 'Compbustion';
+  model.name = 'Combustion';
   model.position.set(0, 0, 0);
 
   jetEngine[x] = model;
@@ -203,7 +204,17 @@ Jet.prototype.addCompbustion = function (geometry, materials) {
   EventsControls.attach(jetEngine[x]);
   x++;
 };
-
+Jet.prototype.addTurbine = function (geometry, materials) {
+  var material = new THREE.MeshNormalMaterial();
+  model = new THREE.Mesh(geometry, material);
+  model.scale.set(15, 15, 15);
+  model.name = 'Turbine';
+  model.position.set(0, 0, 0);
+  jetEngine[x] = model;
+  scene.add(jetEngine[x]);
+  EventsControls.attach(jetEngine[x]);
+  x++;
+};
 
 
 
@@ -280,6 +291,7 @@ Jet.prototype.animate = function () {
         jetEngine[3].rotateZ(1);
         jetEngine[4].rotateZ(1);
         jetEngine[5].rotateZ(1);
+        jetEngine[6].rotateZ(1);
       } catch (err) {
 
       }
