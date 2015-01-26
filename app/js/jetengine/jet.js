@@ -12,8 +12,12 @@ var _this;
 var raycaster;
 var mouseVector;
 
+
+var count = 0;
+var mouse = {x: 0, y: 0};
 var oldButton;
 var materialsData;
+var EventsControls;
 
 function Jet($con) {
 
@@ -57,20 +61,44 @@ function Jet($con) {
 
   scene = new THREE.Scene();
 
-  EventsControls = new EventsControls(camera, renderer.domElement);
-  EventsControls.displacing = false;
+  // find intersections
+  var vector = new THREE.Vector3();
+  var raycaster = new THREE.Raycaster();
 
-  EventsControls.onclick = function () {
+// mouse listener
+  document.addEventListener('click', function (event) {
 
-    this.focused.material = new THREE.MeshPhongMaterial({
-      // light
-      map: texture,
-      // dark
-      shininess: 50
-    });
-    console.log(this.focused.name);
 
-  };
+    var mouse = {x: 0, y: 0};
+    mouse.x = ((event.clientX - $container.offset().left) / $container.width() ) * 2 - 1;
+    mouse.y = -(((event.clientY - $container.offset().top) / $container.innerHeight() ) * 2 - 1);
+    console.log('x: ' + mouse.x + '|    y:' + mouse.y);
+
+    vector.set(mouse.x, mouse.y, 0.5);
+    vector.unproject(camera);
+
+    raycaster.set(camera.position, vector.sub(camera.position).normalize());
+
+    intersects = raycaster.intersectObjects(jetEngine);
+
+    if (intersects.length > 0) {
+
+
+      obj = intersects[0].object;
+      obj.material = new THREE.MeshPhongMaterial({
+        // light
+        map: texture,
+        // dark
+        shininess: 50
+      });
+
+      console.log('INTERSECT Count: ' + ++count);
+
+    }
+
+  }, false);
+
+
 
   loader = new THREE.JSONLoader();
 
@@ -81,7 +109,6 @@ function Jet($con) {
   loader.load("jetengine/v2/compressor2.json", _this.addCompressor2);
   loader.load("jetengine/v2/combustion.json", _this.addCompbustion);
   loader.load("jetengine/v2/turbine.json", _this.addTurbine);
-
 
   var directionalLight = new THREE.DirectionalLight(0xffffff, 0.5);
   directionalLight.position.set(0, 1, 0);
@@ -141,7 +168,7 @@ Jet.prototype.addFan = function (geometry, materials) {
   model.position.set(0, 0, 0);
   jetEngine[x] = model;
   scene.add(jetEngine[x]);
-  EventsControls.attach(jetEngine[x]);
+  // EventsControls.attach(jetEngine[x]);
   x++;
 };
 
@@ -153,7 +180,7 @@ Jet.prototype.addNose = function (geometry, materials) {
   model.position.set(0, 0, 0);
   jetEngine[x] = model;
   scene.add(jetEngine[x]);
-  EventsControls.attach(jetEngine[x]);
+  // EventsControls.attach(jetEngine[x]);
   x++;
 };
 
@@ -165,7 +192,7 @@ Jet.prototype.addShaft = function (geometry, materials) {
   model.position.set(0, 0, 0);
   jetEngine[x] = model;
   scene.add(jetEngine[x]);
-  EventsControls.attach(jetEngine[x]);
+  // EventsControls.attach(jetEngine[x]);
   x++;
 };
 
@@ -177,7 +204,7 @@ Jet.prototype.addCompressor = function (geometry, materials) {
   model.position.set(0, 0, 0);
   jetEngine[x] = model;
   scene.add(jetEngine[x]);
-  EventsControls.attach(jetEngine[x]);
+//  EventsControls.attach(jetEngine[x]);
   x++;
 };
 
@@ -189,7 +216,7 @@ Jet.prototype.addCompressor2 = function (geometry, materials) {
   model.position.set(0, 0, 0);
   jetEngine[x] = model;
   scene.add(jetEngine[x]);
-  EventsControls.attach(jetEngine[x]);
+  // EventsControls.attach(jetEngine[x]);
   x++;
 };
 Jet.prototype.addCompbustion = function (geometry, materials) {
@@ -201,7 +228,7 @@ Jet.prototype.addCompbustion = function (geometry, materials) {
 
   jetEngine[x] = model;
   scene.add(jetEngine[x]);
-  EventsControls.attach(jetEngine[x]);
+  // EventsControls.attach(jetEngine[x]);
   x++;
 };
 Jet.prototype.addTurbine = function (geometry, materials) {
@@ -212,7 +239,7 @@ Jet.prototype.addTurbine = function (geometry, materials) {
   model.position.set(0, 0, 0);
   jetEngine[x] = model;
   scene.add(jetEngine[x]);
-  EventsControls.attach(jetEngine[x]);
+  // EventsControls.attach(jetEngine[x]);
   x++;
 };
 
@@ -285,13 +312,13 @@ Jet.prototype.animate = function () {
 
     if (jetEngine[0] != null) {
       try {
-        jetEngine[0].rotateZ(1);
+        jetEngine[0].rotateZ(4);
         jetEngine[1].rotateZ(1);
         jetEngine[2].rotateZ(0);
-        jetEngine[3].rotateZ(1);
-        jetEngine[4].rotateZ(1);
-        jetEngine[5].rotateZ(1);
-        jetEngine[6].rotateZ(1);
+        jetEngine[3].rotateZ(4);
+        jetEngine[4].rotateZ(4);
+        jetEngine[5].rotateZ(4);
+        jetEngine[6].rotateZ(4);
       } catch (err) {
 
       }
@@ -303,38 +330,7 @@ Jet.prototype.animate = function () {
   renderer.render(scene, camera);
 
   controls.update();
-
-
-};
-
-Jet.prototype.dummy = function () {
-  alert("hello");
+  // EventsControls.update();
 };
 
 
-Jet.prototype.onMouseMove = function (e) {
-
-  var isHovered = $container.is(":hover");
-  console.log(isHovered);
-  if (isHovered) {
-    var mouse = new THREE.Vector2();
-    mouse.x = ( event.clientX / $('#jetEngine').width() ) * 2 - 1;
-    mouse.y = -( event.clientY / $('#jetEngine').height() ) * 2 + 1;
-
-    var vector = new THREE.Vector3(mouse.x, mouse.y, 0.5);
-    var pos = camera.position;
-    var ray = new THREE.Raycaster(pos, vector.unproject(camera).sub(camera.position).normalize());
-
-    var intersects = ray.intersectObjects(jetEngine);
-    if (intersects.length > 0) {
-      console.log("touched:" + intersects[0]);
-
-      // intersects[0].position.x = 1.1;
-    }
-    else {
-      console.log("not touched");
-    }
-  }
-
-
-};
