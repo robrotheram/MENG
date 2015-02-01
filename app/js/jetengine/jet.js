@@ -1,7 +1,8 @@
 var camera, scene, renderer, fan, shaft, loader, controls, play;
-var jetEngine = [];
+var jetEngine = {};
 var x = 0;
-var material_texture = new THREE.MeshLambertMaterial({map: THREE.ImageUtils.loadTexture('images/crate.jpg')});
+var default_texture = new THREE.MeshLambertMaterial({map: THREE.ImageUtils.loadTexture('images/crate.jpg')});
+var material_texture = default_texture;
 var texture = THREE.ImageUtils.loadTexture('images/wood.jpg');
 texture.wrapS = texture.wrapT = THREE.RepeatWrapping;
 
@@ -9,9 +10,8 @@ var play = false;
 var container;
 var $container;
 var _this;
-var raycaster;
-var mouseVector;
 
+var SPEED = 0.01;
 
 var count = 0;
 var mouse = {x: 0, y: 0};
@@ -66,21 +66,23 @@ function Jet($con) {
   var raycaster = new THREE.Raycaster();
 
 // mouse listener
+
   document.addEventListener('click', function (event) {
 
 
     var mouse = {x: 0, y: 0};
     mouse.x = ((event.clientX - $container.offset().left) / $container.width() ) * 2 - 1;
-    mouse.y = -(((event.clientY - $container.offset().top) / $container.innerHeight() ) * 2 - 1);
+    mouse.y = -(((event.pageY - $container.offset().top) / $container.outerHeight() ) * 2 - 1);
     console.log('x: ' + mouse.x + '|    y:' + mouse.y);
 
     vector.set(mouse.x, mouse.y, 0.5);
     vector.unproject(camera);
-
     raycaster.set(camera.position, vector.sub(camera.position).normalize());
-
-    intersects = raycaster.intersectObjects(jetEngine);
-
+    jetEngineArr = _this.convertToArray();
+    intersects = raycaster.intersectObjects(jetEngineArr);
+    for (var modelID in jetEngine) {
+      jetEngine[modelID].material = new THREE.MeshNormalMaterial();
+    }
     if (intersects.length > 0) {
 
 
@@ -149,6 +151,7 @@ Jet.prototype.selectmaterial = function (obj, i) {
 
   texture = THREE.ImageUtils.loadTexture(materialsData.materials[i].texture_img);
   texture.wrapS = texture.wrapT = THREE.RepeatWrapping;
+  $("#material_title").html("<i class='fa fa-info-circle fa-fw'></i> " + materialsData.materials[i].name);
   $("#material_info").html(materialsData.materials[i].description);
   $("#material_info").append("<hr/><h4>Material Properties</h4>");
   $("#material_info").append("<b>Melting Point: </b>" + materialsData.materials[i].melting_point + "<br/>");
@@ -164,10 +167,11 @@ Jet.prototype.addFan = function (geometry, materials) {
   var material = new THREE.MeshNormalMaterial();
   model = new THREE.Mesh(geometry, material);
   model.scale.set(15, 15, 15);
-  model.name = 'Fan';
+  var name = 'Fan';
+  model.name = name;
   model.position.set(0, 0, 0);
-  jetEngine[x] = model;
-  scene.add(jetEngine[x]);
+  jetEngine[model.name] = model;
+  scene.add(jetEngine[model.name]);
   // EventsControls.attach(jetEngine[x]);
   x++;
 };
@@ -178,8 +182,8 @@ Jet.prototype.addNose = function (geometry, materials) {
   model.scale.set(15, 15, 15);
   model.name = 'Nose';
   model.position.set(0, 0, 0);
-  jetEngine[x] = model;
-  scene.add(jetEngine[x]);
+  jetEngine[model.name] = model;
+  scene.add(jetEngine[model.name]);
   // EventsControls.attach(jetEngine[x]);
   x++;
 };
@@ -190,8 +194,8 @@ Jet.prototype.addShaft = function (geometry, materials) {
   model.scale.set(15, 15, 15);
   model.name = 'Shaft';
   model.position.set(0, 0, 0);
-  jetEngine[x] = model;
-  scene.add(jetEngine[x]);
+  jetEngine[model.name] = model;
+  scene.add(jetEngine[model.name]);
   // EventsControls.attach(jetEngine[x]);
   x++;
 };
@@ -202,8 +206,8 @@ Jet.prototype.addCompressor = function (geometry, materials) {
   model.scale.set(15, 15, 15);
   model.name = 'Compressor';
   model.position.set(0, 0, 0);
-  jetEngine[x] = model;
-  scene.add(jetEngine[x]);
+  jetEngine[model.name] = model;
+  scene.add(jetEngine[model.name]);
 //  EventsControls.attach(jetEngine[x]);
   x++;
 };
@@ -214,8 +218,8 @@ Jet.prototype.addCompressor2 = function (geometry, materials) {
   model.scale.set(15, 15, 15);
   model.name = 'Compressor2';
   model.position.set(0, 0, 0);
-  jetEngine[x] = model;
-  scene.add(jetEngine[x]);
+  jetEngine[model.name] = model;
+  scene.add(jetEngine[model.name]);
   // EventsControls.attach(jetEngine[x]);
   x++;
 };
@@ -225,9 +229,8 @@ Jet.prototype.addCompbustion = function (geometry, materials) {
   model.scale.set(15, 15, 15);
   model.name = 'Combustion';
   model.position.set(0, 0, 0);
-
-  jetEngine[x] = model;
-  scene.add(jetEngine[x]);
+  jetEngine[model.name] = model;
+  scene.add(jetEngine[model.name]);
   // EventsControls.attach(jetEngine[x]);
   x++;
 };
@@ -237,8 +240,8 @@ Jet.prototype.addTurbine = function (geometry, materials) {
   model.scale.set(15, 15, 15);
   model.name = 'Turbine';
   model.position.set(0, 0, 0);
-  jetEngine[x] = model;
-  scene.add(jetEngine[x]);
+  jetEngine[model.name] = model;
+  scene.add(jetEngine[model.name]);
   // EventsControls.attach(jetEngine[x]);
   x++;
 };
@@ -305,26 +308,49 @@ Jet.prototype.onWindowResize = function () {
   controls.handleResize();
 };
 
+
+Jet.prototype.convertToArray = function () {
+  JetEngineArray = [];
+  for (var modelID in jetEngine) {
+    var value = jetEngine[modelID];
+    JetEngineArray.push(value);
+  }
+  return JetEngineArray;
+
+};
+
+Jet.prototype.setSpeed = function (spd) {
+  SPEED = (spd / 100);
+};
+
+
+Jet.prototype.hilightPart = function (spd) {
+  for (var modelID in jetEngine) {
+    jetEngine[modelID].material = new THREE.MeshNormalMaterial();
+  }
+
+  SelectedObj = jetEngine[spd];
+  if (spd == 'Combustion') {
+    jetEngine['Compressor2'].material = new THREE.MeshLambertMaterial({color: 0x8888ff});
+  }
+  jetEngine[spd].material = new THREE.MeshLambertMaterial({color: 0x8888ff});
+
+};
+
+
 Jet.prototype.animate = function () {
 
 
   if (play) {
+    console.log(SPEED);
+    jetEngine['Nose'].rotation.z -= SPEED;
+    jetEngine['Fan'].rotation.z -= SPEED;
+    jetEngine['Compressor2'].rotation.z -= SPEED;
+    jetEngine['Combustion'].rotation.z -= SPEED;
+    jetEngine['Turbine'].rotation.z -= SPEED;
 
-    if (jetEngine[0] != null) {
-      try {
-        jetEngine[0].rotateZ(4);
-        jetEngine[1].rotateZ(1);
-        jetEngine[2].rotateZ(0);
-        jetEngine[3].rotateZ(4);
-        jetEngine[4].rotateZ(4);
-        jetEngine[5].rotateZ(4);
-        jetEngine[6].rotateZ(4);
-      } catch (err) {
-
-      }
-
-    }
   }
+
 
   requestAnimationFrame(_this.animate);
   renderer.render(scene, camera);

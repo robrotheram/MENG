@@ -34,7 +34,7 @@ body {
 
 @media (min-width: 768px) {
   #wrapper {
-    padding-left: 150px;
+
   }
 
   #page-wrapper {
@@ -232,19 +232,22 @@ ul.alert-dropdown {
 
 .cust-buton {
   width: 100%;
-  margin: 5px;
 }
 
 .materialImg {
-
   width: 30%;
-  margin: 5px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.panel-body-pading {
+  padding: 5px;
 }
 
 @media (min-width: 768px) {
   .materialImg {
-    width: 80%;
-    margin: 5px;
+    width: 100%;
 
   }
 }
@@ -268,4 +271,8 @@ hr {
 
   border-style: inset;
   border-width: 1px;
+}
+
+td {
+  text-align: center;
 }

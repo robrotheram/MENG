@@ -54,49 +54,98 @@
       <a class="navbar-brand" href="index.html">Material Selector</a>
     </div>
 
-    <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
-    <div class="collapse navbar-collapse navbar-ex1-collapse">
-      <ul class="nav navbar-nav side-nav" style="height: 100%; overflow: scroll;">
-        <br>
-        <li align="center" style="text-align:center;width: 100%">
-          <h4
-            style="align-content: center; text-align: center;width: 100%; color: #ffffff;"> Choose Material</h4></li>
-        <li align="center">
-          <img src="images/metal3.jpg" class="img img-circle img-responsive img-thumbnail materialImg"
-               onclick="jet.selectmaterial(this,1)"/>
-        </li>
-        <li align="center" style="text-align: center; width: 100%; color: #ffffff;">
-          Steel
-        </li>
-        <li align="center">
-          <img src="images/aluminium.jpg" class="img img-circle img-responsive img-thumbnail materialImg"
-               onclick="jet.selectmaterial(this,0)"/>
-        </li>
-        <li align="center" style="text-align: center; width: 100%; color: #ffffff;">
-          Nickle
-        </li>
-        <li align="center">
-          <img src="images/titainum.jpg" class="img img-circle img-responsive img-thumbnail materialImg"
-               onclick="jet.selectmaterial(this,2)"/>
-        </li>
-        <li align="center" style="text-align: center; width: 100%; color: #ffffff;">
-          Titainum
-        </li>
-        <li align="center">
-          <img src="images/crate.jpg" class="img img-circle img-responsive img-thumbnail materialImg"
-               onclick="jet.selectmaterial(this,3)"/>
-        </li>
-        <li align="center" style="text-align: center; width: 100%; color: #ffffff;">
-          Wood
-        </li>
-      </ul>
-    </div>
+
     <!-- /.navbar-collapse -->
   </nav>
+
 
   <div id="page-wrapper" style="height: 100%; overflow: scroll;">
 
     <div class="container-fluid">
+
+      <div class="row">
+        <div class="col-lg-2">
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h3 class="panel-title"><i class="fa fa-fighter-jet fa-fw"></i>Turbine </h3>
+            </div>
+            <div class="panel-body">
+              <img class="partIMG img img-responsive img-thumbnail materialImg" src="images/parts/turbine.png"
+                   width="100%" align="middle" onmouseover="jet.hilightPart('Turbine');">
+            </div>
+          </div>
+        </div>
+
+
+        <div class="col-lg-2">
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h3 class="panel-title"><i class="fa fa-fighter-jet fa-fw"></i>Fan Blades</h3>
+            </div>
+            <div class="panel-body">
+              <img class="partIMG img img-responsive img-thumbnail materialImg" src="images/parts/fanblade.png"
+                   width="100%" align="middle" onmouseover="jet.hilightPart('Fan');">
+            </div>
+          </div>
+        </div>
+
+
+        <div class="col-lg-2">
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h3 class="panel-title"><i class="fa fa-fighter-jet fa-fw"></i> Nose Cone</h3>
+            </div>
+            <div class="panel-body">
+              <img class="partIMG img img-responsive img-thumbnail materialImg" src="images/parts/nosecone.png"
+                   width="100%" align="middle" onmouseover="jet.hilightPart('Nose');">
+
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-2">
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h3 class="panel-title"><i class="fa fa-fighter-jet fa-fw"></i>Combustion</h3>
+            </div>
+            <div class="panel-body">
+              <img class="partIMG img img-responsive img-thumbnail materialImg" src="images/parts/combusture.png"
+                   width="100%" align="middle" onmouseover="jet.hilightPart('Compressor');">
+
+            </div>
+          </div>
+        </div>
+
+
+        <div class="col-lg-2">
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h3 class="panel-title"><i class="fa fa-fighter-jet fa-fw"></i>Compressors</h3>
+            </div>
+            <div class="panel-body">
+              <img class="partIMG img img-responsive img-thumbnail materialImg" src="images/parts/compresor.png"
+                   width="100%" align="middle" onmouseover="jet.hilightPart('Combustion');">
+
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-2">
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h3 class="panel-title"><i class="fa fa-fighter-jet fa-fw"></i>Shaft</h3>
+            </div>
+            <div class="panel-body">
+              <img class="partIMG img img-responsive img-thumbnail materialImg" src="images/parts/shaft.png"
+                   width="100%" onmouseover="jet.hilightPart('Shaft');">
+
+            </div>
+          </div>
+        </div>
+
+
+      </div>
+      <!-- /.row -->
 
       <div class="row">
         <div class="col-lg-12">
@@ -113,26 +162,79 @@
       <!-- /.row -->
 
 
-      <div class="row">
+      <div id="infoSection" class="row">
         <div class="col-lg-12">
           <div class="panel panel-default">
             <div class="panel-heading">
               <h3 class="panel-title"><i class="fa fa-cog fa-spin fa-fw"></i> Controls</h3>
             </div>
             <div class="panel-body">
+              <table class="table table-bordered" width="100%">
+                <col width="16%">
+                <col width="16%">
+                <col width="16%">
+                <col width="16%">
+                <col width="16%">
+                <col width="16%">
+                <tr class="active">
+                  <td><b>Steel</b></td>
+                  <td><b>Nickle</b></td>
+                  <td><b>Titainum</b></td>
+                  <td><b>Wood</b></td>
+                  <td><b>Carbon Fibre</b></td>
+                  <td><b>Cast Iron</b></td>
+
+                </tr>
+                <tr>
+                  <td>
+                    <img src="images/metal3.jpg" class="img img-circle img-responsive img-thumbnail materialImg"
+                         onclick="jet.selectmaterial(this,1)"/>
+                  </td>
+                  <td>
+                    <img src="images/aluminium.jpg" class="img img-circle img-responsive img-thumbnail materialImg"
+                         onclick="jet.selectmaterial(this,0)"/>
+                  </td>
+                  <td>
+                    <img src="images/titainum.jpg" class="img img-circle img-responsive img-thumbnail materialImg"
+                         onclick="jet.selectmaterial(this,2)"/>
+                  </td>
+                  <td>
+                    <img src="images/crate.jpg" class="img img-circle img-responsive img-thumbnail materialImg"
+                         onclick="jet.selectmaterial(this,3)"/>
+                  </td>
+                  <td>
+                    <img src="images/carbon-texture.png" class="img img-circle img-responsive img-thumbnail materialImg"
+                         onclick="jet.selectmaterial(this,3)"/>
+                  </td>
+                  <td>
+                    <img src="images/castIron.jpg" class="img img-circle img-responsive img-thumbnail materialImg"
+                         onclick="jet.selectmaterial(this,3)"/>
+                  </td>
+                </tr>
+              </table>
+
+
+              <div class="row" style="padding: 10px;">
+                <div class="panel panel-default">
+                  <div class="panel-heading">
+                    <h3 class="panel-title" id="material_title"><i class="fa fa-info-circle fa-fw"></i> Material Info
+                    </h3>
+                  </div>
+                  <div class="panel-body" id="material_info">
+                  </div>
+                </div>
+              </div>
+
+
               <div class="row">
-                <div class="col-md-4">
+                <div class="col-md-3">
                   <button type="submit" id="playbtn" onclick="jet.playPause('#playbtn')"
                           class="btn btn-primary cust-buton">Play
                   </button>
-                  <button type="submit" onclick="jet.changeColor()" class="btn btn-success cust-buton">Change Color
-                  </button>
-
-                  <button type="submit" onclick="jet.reset()" class="btn btn-danger cust-buton">Reset</button>
                 </div>
 
-                <div class="col-md-4">
-                  <table style="margin-top:5px;" class="table table-striped table-bordered">
+                <div class="col-md-6">
+                  <table style="margin-top:5px;" width="100%" border="0">
                     <colgroup>
                       <col span="1" style="width: 15%;">
                       <col span="1" style="width: 85%;">
@@ -140,80 +242,21 @@
                     <tr>
                       <td>Thrust:</td>
                       <td><input id="ex1" style="width:100%" data-slider-id='ex1Slider' data-slider-tooltip="hide"
-                                 data-slider-min="1" data-slider-max="100" data-slider-step="1" data-slider-value="67"/>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>Fuel:</td>
-                      <td><input id="ex2" style="width:100%" data-slider-id='ex2Slider' data-slider-tooltip="hide"
-                                 data-slider-min="1" data-slider-max="100" data-slider-step="1" data-slider-value="67"/>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>Weight:</td>
-                      <td><input id="ex3" style="width:100%" data-slider-id='ex2Slider' data-slider-tooltip="hide"
-                                 data-slider-min="1" data-slider-max="100" data-slider-step="1" data-slider-value="67"/>
+                                 data-slider-min="1" data-slider-max="10" data-slider-step="1" data-slider-value="2"/>
                       </td>
                     </tr>
                   </table>
                 </div>
-                <div class="col-md-4">
 
-                  <div class="row">
-                    <div class="col-sm-4">
-                      <div id="gauge" style="width:100%; height:90px"></div>
-                    </div>
-                    <div class="col-sm-4">
-                      <div id="gauge-2" style="width:100%; height:90px"></div>
-                    </div>
-                    <div class="col-sm-4">
-                      <div id="gauge-3" style="width:100%; height:90px"></div>
-                    </div>
-                  </div>
-
-
+                <div class="col-md-3">
+                  <button type="submit" id="scrollToTOP" class="btn btn-primary cust-buton">To Parts List</button>
                 </div>
+
               </div>
             </div>
           </div>
 
-          <div class="row">
-            <div class="col-lg-12">
-              <div class="panel panel-default">
-                <div class="panel-heading">
-                  <h3 class="panel-title"><i class="fa fa-info-circle  fa-fw"></i>Info</h3>
-                </div>
-                <div class="panel-body">
-                  <div class="row">
-                    <div class="col-md-5">
-                      <iframe width="100%" height="315"
-                              src="//www.youtube.com/embed/eA699AKxT7s?rel=0&amp;controls=0&amp;showinfo=0"
-                              frameborder="0" allowfullscreen></iframe>
-                    </div>
-                    <div id="material_info" class="col-md-7">
-                      Try-hard lo-fi ennui mixtape, fap American Apparel Helvetica. Tumblr next level Thundercats banjo
-                      literally Vice occupy. Ethical chillwave beard meh raw denim, lumbersexual cardigan cold-pressed
-                      swag Etsy kale chips Austin. Sartorial master cleanse selfies viral VHS ethical Godard Brooklyn,
-                      Odd Future chillwave cold-pressed jean shorts. Bicycle rights fingerstache Marfa four loko, occupy
-                      fixie lomo. Forage Pitchfork hashtag pop-up, Schlitz mumblecore Carles literally. Jean shorts roof
-                      party pour-over four loko, beard plaid salvia fashion axe hoodie.
-                      <br/><br>
-                      Paleo Williamsburg migas blog, Pitchfork plaid Brooklyn messenger bag Austin Pinterest
-                      dreamcatcher. Photo booth farm-to-table lo-fi, Pinterest normcore banh mi sartorial fanny pack
-                      gentrify fingerstache umami food truck shabby chic. Paleo jean shorts freegan, fingerstache
-                      gluten-free food truck synth PBR&B slow-carb. Polaroid street art gentrify, ethical next level
-                      butcher trust fund YOLO craft beer disrupt bitters Austin. Skateboard gluten-free leggings,
-                      gentrify keffiyeh Neutra squid semiotics cray Vice pickled pop-up vinyl church-key. Cronut raw
-                      denim mustache Brooklyn. Occupy skateboard cold-pressed selvage scenester leggings, blog American
-                      Apparel normcore.
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
 
-        </div>
         <!-- /.container-fluid -->
 
       </div>
@@ -249,68 +292,16 @@
     <script type='text/javascript' src="js/bootstrap-slider.js"></script>
     <script type='text/javascript'>
 
-      var g = new JustGage({
-        id: "gauge",
-        value: 67,
-        min: 0,
-        max: 100,
-        title: "Trust",
-        titleFontColor: "#000",
-        labelFontColor: "#000",
-        valueFontColor: "#000",
-        gaugeWidthScale: 0.8
-      });
-
-      var g1 = new JustGage({
-        id: "gauge-2",
-        value: 67,
-        min: 0,
-        max: 100,
-        title: "Performace",
-        titleFontColor: "#000",
-        labelFontColor: "#000",
-        valueFontColor: "#000",
-        gaugeWidthScale: 0.8
-      });
-
-      var g2 = new JustGage({
-        id: "gauge-3",
-        value: 67,
-        min: 0,
-        max: 100,
-        title: "Flight Time:",
-        titleFontColor: "#000",
-        labelFontColor: "#000",
-        valueFontColor: "#000",
-        gaugeWidthScale: 0.8
-      });
 
 
       $("#ex1").slider();
-      $("#ex2").slider();
-      $("#ex3").slider();
+
 
       $("#ex1").on("slide", function (slideEvt) {
-        g.value = slideEvt.value;
-        console.log(g.value);
-        console.log(slideEvt.value);
-        g.refresh(slideEvt.value);
+        jet.setSpeed(slideEvt.value);
       });
 
 
-      $("#ex2").on("slide", function (slideEvt) {
-        g1.value = slideEvt.value;
-        console.log(g1.value);
-        console.log(slideEvt.value);
-        g1.refresh(slideEvt.value);
-      });
-
-      $("#ex3").on("slide", function (slideEvt) {
-        g2.value = slideEvt.value;
-        console.log(g2.value);
-        console.log(slideEvt.value);
-        g2.refresh(slideEvt.value);
-      });
 
 
 
@@ -322,21 +313,26 @@
         /* Example 1 */
         $('#ex1').slider({
           formatter: function (value) {
-            g.value = value;
-            return 'Current value: ' + value;
-          }
-        });
-        $('#ex2').slider({
-          formatter: function (value) {
-            return 'Current value: ' + value;
-          }
-        });
-        $('#ex3').slider({
-          formatter: function (value) {
+
             return 'Current value: ' + value;
           }
         });
 
+        $('.partIMG').click(function () {
+
+          $('html, body').animate({
+            scrollTop: $("#infoSection").offset().top
+          }, 500);
+
+        });
+
+        $('#scrollToTOP').click(function () {
+
+          $('html, body').animate({
+            scrollTop: $("#page-wrapper").offset().top
+          }, 500);
+
+        });
       });
     </script>
 
