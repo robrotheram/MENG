@@ -225,7 +225,9 @@ ul.alert-dropdown {
 }
 
 .webgl {
-  height: 400px;
+  width: 100%;
+  min-height: 400px;
+  height: 100%;
 }
 
 .cust-buton {

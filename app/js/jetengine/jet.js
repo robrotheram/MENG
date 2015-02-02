@@ -17,6 +17,8 @@ var count = 0;
 var mouse = {x: 0, y: 0};
 var oldButton;
 var materialsData;
+var partsData;
+
 var EventsControls;
 
 function Jet($con) {
@@ -29,6 +31,8 @@ function Jet($con) {
 
 
   _this.getMaterials();
+  _this.getParts();
+
   container.style.width = width;
   container.style.height = height;
   renderer = new THREE.WebGLRenderer({alpha: true});
@@ -73,7 +77,7 @@ function Jet($con) {
     var mouse = {x: 0, y: 0};
     mouse.x = ((event.clientX - $container.offset().left) / $container.width() ) * 2 - 1;
     mouse.y = -(((event.pageY - $container.offset().top) / $container.outerHeight() ) * 2 - 1);
-    console.log('x: ' + mouse.x + '|    y:' + mouse.y);
+    //console.log('x: ' + mouse.x + '|    y:' + mouse.y);
 
     vector.set(mouse.x, mouse.y, 0.5);
     vector.unproject(camera);
@@ -87,14 +91,19 @@ function Jet($con) {
 
 
       obj = intersects[0].object;
-      obj.material = new THREE.MeshPhongMaterial({
-        // light
-        map: texture,
-        // dark
-        shininess: 50
-      });
 
-      console.log('INTERSECT Count: ' + ++count);
+      if ((obj.name == "Compressor") || (obj.name == "Compressor2")) {
+        jetEngine["Compressor"].material = new THREE.MeshPhongMaterial({map: texture, shininess: 50});
+        jetEngine["Compressor2"].material = new THREE.MeshPhongMaterial({map: texture, shininess: 50});
+        _this.addInfo("Compressor");
+      } else {
+        obj.material = new THREE.MeshPhongMaterial({map: texture, shininess: 50});
+        _this.addInfo(intersects[0].object.name);
+      }
+
+
+
+
 
     }
 
@@ -107,9 +116,9 @@ function Jet($con) {
   loader.load("jetengine/v2/fan.json", _this.addFan);
   loader.load("jetengine/v2/shaft.json", _this.addShaft);
   loader.load("jetengine/v2/nose.json", _this.addNose);
-  loader.load("jetengine/v2/compressor1.json", _this.addCompressor);
+  loader.load("jetengine/v2/combustion.json", _this.addCompressor);
   loader.load("jetengine/v2/compressor2.json", _this.addCompressor2);
-  loader.load("jetengine/v2/combustion.json", _this.addCompbustion);
+  loader.load("jetengine/v2/compressor1.json", _this.addCompbustion);
   loader.load("jetengine/v2/turbine.json", _this.addTurbine);
 
   var directionalLight = new THREE.DirectionalLight(0xffffff, 0.5);
@@ -127,6 +136,7 @@ function Jet($con) {
   camera.position.y= 40;
   camera.position.z= 150;
 
+
   _this.animate();
 }
 
@@ -134,7 +144,15 @@ function Jet($con) {
 Jet.prototype.getMaterials = function () {
   $.getJSON("json/materials.json", function (data) {
     materialsData = data;
-    //alert(materialsData.materials[0].name);
+  });
+
+};
+
+
+Jet.prototype.getParts = function () {
+  $.getJSON("json/parts.json", function (data) {
+    partsData = data;
+    _this.addInfo("Nose");
   });
 
 };
@@ -252,10 +270,21 @@ Jet.prototype.addTurbine = function (geometry, materials) {
 };
 
 
+Jet.prototype.addInfo = function (objName) {
 
+  for (var i = 0; i < partsData.jetEngineParts.length; i++) {
+    if (partsData.jetEngineParts[i].name == objName) {
+      //alert(partsData.jetEngineParts[i].description)
+      $("#partName").html("<h4> " + partsData.jetEngineParts[i].name + "</h4>");
+      $("#parIMG").html("<img class='scrollToTOP partIMG img img-responsive img-thumbnail' src=\"" + partsData.jetEngineParts[i].texture_img + "\" width='100%' align='middle''>");
+      $("#PartDesc").html(partsData.jetEngineParts[i].description);
+      $("#PartTmp").html(partsData.jetEngineParts[i].operating_temperature);
+      $("#PartRPM").html("<p>" + partsData.jetEngineParts[i].rpm + "</p>");
+      break;
+    }
+  }
 
-
-
+};
 
 
 
@@ -352,7 +381,7 @@ Jet.prototype.animate = function () {
     jetEngine['Nose'].rotation.z -= SPEED;
     jetEngine['Fan'].rotation.z -= SPEED;
     jetEngine['Compressor2'].rotation.z -= SPEED;
-    jetEngine['Combustion'].rotation.z -= SPEED;
+    jetEngine['Compressor'].rotation.z -= SPEED;
     jetEngine['Turbine'].rotation.z -= SPEED;
 
   }
