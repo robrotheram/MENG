@@ -154,11 +154,34 @@
               <h3 class="panel-title"><i class="fa fa-fighter-jet fa-fw"></i> Jet Engine</h3>
             </div>
             <div class="panel-body">
-              <div id="jet" class="webgl"></div>
+              <div class="row">
+                <div id="jet" class="col-md-8 webgl img-thumbnail img-responsive"></div>
+                <div class="col-md-4">
+                  <button type="submit" id="playbtn" onclick="jet.playPause('#playbtn')"
+                        class="btn btn-primary cust-buton">Play
+                  </button>
+
+                  <table style="margin-top:5px;" width="100%" border="0">
+                    <colgroup>
+                      <col span="1" style="width: 15%;">
+                      <col span="1" style="width: 85%;">
+                    </colgroup>
+                    <tr>
+                      <td>Thrust:</td>
+                      <td><input id="ex1" style="width:100%" data-slider-id='ex1Slider' data-slider-tooltip="hide"
+                               data-slider-min="1" data-slider-max="10" data-slider-step="1" data-slider-value="2"/>
+                      </td>
+                    </tr>
+                  </table>
+
+
+                  <button type="submit" id="scrollToTOP" class="btn btn-primary cust-buton">To Parts List</button>
+                </div>
+              </div>
             </div>
           </div>
         </div>
-      </div>
+        </div>
       <!-- /.row -->
 
 
@@ -169,7 +192,7 @@
               <h3 class="panel-title"><i class="fa fa-cog fa-spin fa-fw"></i> Controls</h3>
             </div>
             <div class="panel-body">
-              <table class="table table-bordered" width="100%">
+              <table class="table table-bordered" style="width:80%; margin: 0 auto;">
                 <col width="16%">
                 <col width="16%">
                 <col width="16%">
@@ -223,35 +246,6 @@
                   <div class="panel-body" id="material_info">
                   </div>
                 </div>
-              </div>
-
-
-              <div class="row">
-                <div class="col-md-3">
-                  <button type="submit" id="playbtn" onclick="jet.playPause('#playbtn')"
-                          class="btn btn-primary cust-buton">Play
-                  </button>
-                </div>
-
-                <div class="col-md-6">
-                  <table style="margin-top:5px;" width="100%" border="0">
-                    <colgroup>
-                      <col span="1" style="width: 15%;">
-                      <col span="1" style="width: 85%;">
-                    </colgroup>
-                    <tr>
-                      <td>Thrust:</td>
-                      <td><input id="ex1" style="width:100%" data-slider-id='ex1Slider' data-slider-tooltip="hide"
-                                 data-slider-min="1" data-slider-max="10" data-slider-step="1" data-slider-value="2"/>
-                      </td>
-                    </tr>
-                  </table>
-                </div>
-
-                <div class="col-md-3">
-                  <button type="submit" id="scrollToTOP" class="btn btn-primary cust-buton">To Parts List</button>
-                </div>
-
               </div>
             </div>
           </div>
@@ -321,7 +315,7 @@
         $('.partIMG').click(function () {
 
           $('html, body').animate({
-            scrollTop: $("#infoSection").offset().top
+            scrollTop: ($("#infoSection").offset().top + 20)
           }, 500);
 
         });

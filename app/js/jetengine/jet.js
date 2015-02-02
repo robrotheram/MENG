@@ -122,6 +122,11 @@ function Jet($con) {
   window.addEventListener('resize', _this.onWindowResize, false);
 
 
+//  amera: {"x":146.90523813315187,"y":37.57719245188191,"z":150.21266339543962}
+  camera.position.x= 150;
+  camera.position.y= 40;
+  camera.position.z= 150;
+
   _this.animate();
 }
 
@@ -269,6 +274,7 @@ Jet.prototype.changeColor = function () {
 
 Jet.prototype.playPause = function (btn) {
 
+  //console.log("camera: "+JSON.stringify(camera.position));
   play = !play;
   if (play) {
     $(playbtn).html('Puase');
