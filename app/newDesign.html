@@ -18,6 +18,11 @@
   <link href="css/custome.css" rel="stylesheet">
   <link href="css/bootstrap-slider.css" rel="stylesheet">
 
+  <script src="js/raphael.2.1.0.min.js"></script>
+  <script src="js/justgage.1.0.1.min.js"></script>
+
+
+
   <!-- Custom Fonts -->
   <link href="font-awesome-4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -27,6 +32,11 @@
   <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
   <![endif]-->
 
+  <style>
+    #ex1Slider .slider-selection {
+      background: #BABABA;
+    }
+  </style>
 </head>
 
 <body>
@@ -38,18 +48,20 @@
     <ul class="sidebar-nav">
       <img src="images/swLogo.png" width="100%;" style="padding-left:20px;padding-right: 20px">
       <li class="active">
-        <p style="color: #ffffff"> links go here</p>
+        <button type="submit" id="Engine" class="btn btn-primary cust-buton">Jet Engines</button>
       </li>
       <li>
+        <button type="submit" id="Material" class="btn btn-primary cust-buton">Materials</button>
+      </li>
+      <li>
+        <button type="submit" id="Choose" class="btn btn-primary cust-buton">Choose Parts</button>
+      </li>
+      <li>
+        <button type="submit" id="Help" class="btn btn-danger cust-buton" data-toggle="modal" data-target="#HELPModal"> Help</button>
 
       </li>
       <li>
-
-      </li>
-      <li>
-
-      </li>
-      <li>
+        <button type="submit" id="Help" class="btn btn-default cust-buton" data-toggle="modal" data-target="#ABOUTModal"> About</button>
 
       </li>
       <li>
@@ -103,7 +115,7 @@
                 </table>
               </div>
               <div class="col-sm-3">
-                <button type="submit" id="mat_button" class="btn btn-primary cust-buton">To Materials</button>
+                <button type="submit" class="btn btn-success cust-buton" onclick="jet.reset()">Reset Model</button>
               </div>
             </div>
 
@@ -112,12 +124,12 @@
             <div class="row">
               <div class="col-md-12">
                 <table class="table table-bordered">
-                  <col width="30%">
+                  <!--<col width="15%">-->
                   <col width="10%">
-                  <col width="60%">
+                  <col width="75%">
                   <tr>
-                    <th rowspan="4" id="parIMG"></th>
-                    <th colspan="2" id="partName"><h4>Part</h4></th>
+                   <!-- <th rowspan="4" id="parIMG"></th>-->
+                    <th colspan="2" id="partName" class="text-center"><h4>Part</h4></th>
                   </tr>
                   <tr>
                     <td>Description</td>
@@ -147,11 +159,9 @@
         <div class="panel panel-default">
           <div class="panel-heading">
             <h3 class="panel-title"><i class="fa fa-cog fa-spin fa-fw"></i> Controls</h3>
-            <button type="submit" id="totheTop" style="margin-top:-25px;" class="btn btn-primary pull-right">To Jet
-              Engines
-            </button>
           </div>
           <div class="panel-body">
+
             <table class="table table-bordered" style="width:80%; margin: 0 auto;">
               <col width="16%">
               <col width="16%">
@@ -223,17 +233,267 @@
     <!-- /.container-fluid -->
 
 
+
+
+
+    <div id="chooseSection" class="row">
+      <div class="col-lg-12">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title"><i class="fa fa-cog fa-spin fa-fw"></i> Choose Material Section</h3>
+          </div>
+          <div class="panel-body">
+            <div class="row">
+              <div class="col-lg-2">
+                <div class="panel panel-default">
+                  <div class="panel-heading">
+                    <h3 class="panel-title"><i class="fa fa-fighter-jet fa-fw"></i>Turbine </h3>
+                  </div>
+                  <div class="panel-body">
+                    <img class="partIMG img img-responsive img-thumbnail materialImg" src="images/parts/turbine.png"
+                         width="100%" align="middle" onmouseover="jet.hilightPart('Turbine');">
+
+                    <br/>
+                    <div class="drop-thing img-thumbnail"></div>
+
+
+                  </div>
+                </div>
+              </div>
+
+
+              <div class="col-lg-2">
+                <div class="panel panel-default">
+                  <div class="panel-heading">
+                    <h3 class="panel-title"><i class="fa fa-fighter-jet fa-fw"></i>Fan Blades</h3>
+                  </div>
+                  <div class="panel-body">
+                    <img class="partIMG img img-responsive img-thumbnail materialImg" src="images/parts/fanblade.png"
+                         width="100%" align="middle" onmouseover="jet.hilightPart('Fan');">
+
+                    <br/>
+                    <div class="drop-thing img-thumbnail"></div>
+                  </div>
+                </div>
+              </div>
+
+
+              <div class="col-lg-2">
+                <div class="panel panel-default">
+                  <div class="panel-heading">
+                    <h3 class="panel-title"><i class="fa fa-fighter-jet fa-fw"></i> Nose Cone</h3>
+                  </div>
+                  <div class="panel-body">
+                    <img class="partIMG img img-responsive img-thumbnail materialImg" src="images/parts/nosecone.png"
+                         width="100%" align="middle" onmouseover="jet.hilightPart('Nose');">
+
+                    <br/>
+
+                    <div class="drop-thing img-thumbnail"></div>
+
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-lg-2">
+                <div class="panel panel-default">
+                  <div class="panel-heading">
+                    <h3 class="panel-title"><i class="fa fa-fighter-jet fa-fw"></i>Combustion</h3>
+                  </div>
+                  <div class="panel-body">
+                    <img class="partIMG img img-responsive img-thumbnail materialImg" src="images/parts/combusture.png"
+                         width="100%" align="middle" onmouseover="jet.hilightPart('Compressor');">
+
+                    <br/>
+                    <div class="drop-thing img-thumbnail"></div>
+
+                  </div>
+                </div>
+              </div>
+
+
+              <div class="col-lg-2">
+                <div class="panel panel-default">
+                  <div class="panel-heading">
+                    <h3 class="panel-title"><i class="fa fa-fighter-jet fa-fw"></i>Compressors</h3>
+                  </div>
+                  <div class="panel-body">
+                    <img class="partIMG img img-responsive img-thumbnail materialImg" src="images/parts/compresor.png"
+                         width="100%" align="middle" onmouseover="jet.hilightPart('Combustion');">
+
+                    <br/>
+                    <div class="drop-thing img-thumbnail"></div>
+
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-lg-2">
+                <div class="panel panel-default">
+                  <div class="panel-heading">
+                    <h3 class="panel-title"><i class="fa fa-fighter-jet fa-fw"></i>Shaft</h3>
+                  </div>
+                  <div class="panel-body">
+                    <img class="partIMG img img-responsive img-thumbnail materialImg" src="images/parts/shaft.png"
+                         width="100%" onmouseover="jet.hilightPart('Shaft');">
+
+                    <br/>
+                    <div class="drop-thing img-thumbnail"></div>
+
+                  </div>
+                </div>
+              </div>
+
+
+            </div>
+            <!-- /.row -->
+
+            <table class="table table-bordered" style="width:80%; margin: 0 auto;">
+              <col width="16%">
+              <col width="16%">
+              <col width="16%">
+              <col width="16%">
+              <col width="16%">
+              <col width="16%">
+              <tr class="active">
+                <td><b>Steel</b></td>
+                <td><b>Nickle</b></td>
+                <td><b>Titainum</b></td>
+                <td><b>Wood</b></td>
+                <td><b>Carbon Fibre</b></td>
+                <td><b>Cast Iron</b></td>
+
+              </tr>
+              <tr>
+                <td>
+                  <img src="images/metal3.jpg"
+                       class=" scrollToTOP img img-circle img-responsive img-thumbnail materialImg" />
+                </td>
+                <td>
+                  <img src="images/aluminium.jpg"
+                       class=" scrollToTOP img img-circle img-responsive img-thumbnail materialImg"/>
+                </td>
+                <td>
+                  <img src="images/titainum.jpg"
+                       class=" scrollToTOP img img-circle img-responsive img-thumbnail materialImg"/>
+                </td>
+                <td>
+                  <img src="images/crate.jpg"
+                       class=" scrollToTOP img img-circle img-responsive img-thumbnail materialImg"/>
+                </td>
+                <td>
+                  <img src="images/carbon-texture.png"
+                       class="scrollToTOP img img-circle img-responsive img-thumbnail materialImg"/>
+                </td>
+                <td>
+                  <img src="images/castIron.jpg"
+                       class="scrollToTOP img img-circle img-responsive img-thumbnail materialImg"/>
+                </td>
+              </tr>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- /.container-fluid -->
+
+
   </div>
   <!-- /#page-content-wrapper -->
 
 </div>
+
+
+
+
+<!-- HELP Modal -->
+<div class="modal fade" id="HELPModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="false">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header" style="background-color: #005f8d; color: #ffffff">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Help</h4>
+      </div>
+      <div class="modal-body">
+        <h4>Welcome to the help section.</h4>
+        <p>Site needs:</p>
+        <ul>
+          <li>Modern Day Browser</li>
+        </ul>
+        <h4>How to use the site</h4>
+        <ul>
+          <li>View the Jet Engine learn about each part</li>
+          <li>View the Materials Section</li>
+          <li>Click on choose and drag the right material to the correct part </li>
+        </ul>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ABOUT Modal -->
+<div class="modal fade" id="ABOUTModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="false">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header" style="background-color: #005f8d; color: #ffffff">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" >About</h4>
+      </div>
+      <div class="modal-body">
+        more info commig soon
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
 <!-- /#wrapper -->
 
 <!-- jQuery -->
 <script src="bower_components/jquery/dist/jquery.min.js"></script>
+<script src="bower_components/jquery-ui/jquery-ui.min.js"></script>
+<script src="bower_components/threejs/build/three.min.js"></script>
+
+
 
 <!-- Bootstrap Core JavaScript -->
 <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<!--Three -js -->
+<script src="js/loaders/OBJLoader.js"></script>
+<script src="js/loaders/TrackballControls.js"></script>
+<script src="js/loaders/EventsControls.js"></script>
+<script src="js/jetengine/jet.js"></script>
+
+
+<script>
+
+ // $.widget.bridge('slider', $.ui.slider);
+  var jet = new Jet($("#jet"));
+
+
+</script>
+
+
+<script type='text/javascript' src="bower_components/seiyria-bootstrap-slider/js/bootstrap-slider.js"></script>
+<script src="js/Detector.js"></script>
 
 
 <script>
@@ -245,24 +505,20 @@
     $("#infoSection").css({opacity: 0.5});
 
 
-    $("#mat_button").click(function () {
+    $("#chooseSection").hide();
+    $("#chooseSection").width(0);
+    $("#chooseSection").css({opacity: 0.5});
+
+    $("#Engine").click(function () {
       console.log("hekk");
-      $("#webGLROW").animate({
+
+      $("#chooseSection").animate({
         'width': 0,
         'opacity': 0
       }, 750, function () {
-        $("#webGLROW").hide();
-        $("#infoSection").show();
-        $("#infoSection").animate({
-          'width': "100%",
-          'opacity': 1
-        }, 750, function () {
-        });
+        $("#chooseSection").hide();
       });
-    });
 
-    $("#totheTop").click(function () {
-      console.log("hekk");
       $("#infoSection").animate({
         'width': 0,
         'opacity': 0
@@ -278,50 +534,67 @@
     });
 
 
-  });
-</script>
+    $("#Material").click(function () {
+      console.log("hekk");
 
 
-<!--Three -js -->
+      $("#chooseSection").animate({
+        'width': 0,
+        'opacity': 0
+      }, 750, function () {
+        $("#chooseSection").hide();
+      });
 
-<script src="bower_components/threejs/build/three.min.js"></script>
-<script src="js/loaders/OBJLoader.js"></script>
-<script src="js/loaders/TrackballControls.js"></script>
-<script src="js/loaders/EventsControls.js"></script>
-<script src="js/jetengine/jet.js"></script>
-
-
-<script>
-
-  var jet = new Jet($("#jet"));
-
-
-</script>
-
-
-<script type='text/javascript' src="js/bootstrap-slider.js"></script>
-<script src="js/Detector.js"></script>
-<script type='text/javascript'>
-
-
-  $("#ex1").slider();
+      $("#webGLROW").animate({
+        'width': 0,
+        'opacity': 0
+      }, 750, function () {
+        $("#webGLROW").hide();
+        $("#infoSection").show();
+        $("#infoSection").animate({
+          'width': "100%",
+          'opacity': 1
+        }, 750, function () {
+        });
+      });
+    });
 
 
-  $("#ex1").on("slide", function (slideEvt) {
-    jet.setSpeed(slideEvt.value);
-  });
+    $("#Choose").click(function () {
+      console.log("hekk");
+
+      $("#infoSection").animate({
+        'width': 0,
+        'opacity': 0
+      }, 750, function () {
+        $("#infoSection").hide();
+      });
+
+      $("#webGLROW").animate({
+        'width': 0,
+        'opacity': 0
+      }, 750, function () {
+        $("#webGLROW").hide();
+        $("#chooseSection").show();
+        $("#chooseSection").animate({
+          'width': "100%",
+          'opacity': 1
+        }, 750, function () {
+        });
+      });
+    });
 
 
-  $(document).ready(function () {
-    /* Example 1 */
 
-    if (!Detector.webgl) alert("This Browser does not suport WebGL please go and get it updated.\n https://get.webgl.org/ ");
-    $('#ex1').slider({
-      formatter: function (value) {
-
+    $('#ex1').bootstrapSlider({
+      formatter: function(value) {
+        jet.setSpeed(value);
         return 'Current value: ' + value;
       }
     });
+
+    if (!Detector.webgl) alert("This Browser does not suport WebGL please go and get it updated.\n https://get.webgl.org/ ");
+
 
     $('#totheTop').click(function () {
 
@@ -338,6 +611,36 @@
       }, 500);
 
     });
+
+
+
+    $(".scrollToTOP" ).draggable({
+      appendTo: "body",
+      activeClass: "draggable",
+      helper: "clone"
+    });
+
+
+    $( ".drop-thing" ).droppable({
+      activeClass: "droppable",
+      hoverClass: "ui-state-hover",
+
+      helper: "clone",
+      drop: function( event, ui ) {
+        $( this ).find( ".materialImg" ).remove();
+        var obj =  ui.draggable.clone();
+        obj.addClass("dropedIMG");
+        obj.appendTo( this );
+
+      }
+    });
+
+
+    $(document).on('click', ".dropedIMG", function() {
+      $(this).remove();
+    });
+
+
   });
 </script>
 
@@ -345,3 +648,7 @@
 </body>
 
 </html>
+
+
+
+

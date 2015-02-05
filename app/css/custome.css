@@ -59,7 +59,7 @@ body {
 }
 
 .sidebar-nav li {
-  text-indent: 10px;
+  text-indent: 1px;
   line-height: 40px;
 }
 
@@ -159,7 +159,7 @@ body {
 
 .webgl {
   width: 100%;
-  min-height: 400px;
+  min-height: 350px;
   height: 100%;
 }
 
@@ -180,7 +180,7 @@ body {
 
 @media (min-width: 768px) {
   .materialImg {
-    width: 100%;
+    width: 150px;
 
   }
 }
@@ -213,4 +213,22 @@ td {
 
 .row {
   margin: 0px;
+}
+
+.text_center{
+  text-align: center;
+}
+
+.draggable{
+  width: 100px;
+  height: 100px;
+}
+
+.droppable{
+  background-color: #0073ea;
+}
+
+.drop-thing{
+  width:100%;
+  min-height:150px;
 }
