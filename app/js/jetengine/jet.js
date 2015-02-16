@@ -113,13 +113,13 @@ function Jet($con) {
 
   loader = new THREE.JSONLoader();
 
-  loader.load("jetengine/v2/fan.json", _this.addFan);
-  loader.load("jetengine/v2/shaft.json", _this.addShaft);
-  loader.load("jetengine/v2/nose.json", _this.addNose);
-  loader.load("jetengine/v2/combustion.json", _this.addCompressor);
-  loader.load("jetengine/v2/compressor2.json", _this.addCompressor2);
-  loader.load("jetengine/v2/compressor1.json", _this.addCompbustion);
-  loader.load("jetengine/v2/turbine.json", _this.addTurbine);
+  loader.load("v2/fan.json", _this.addFan);
+  loader.load("v2/shaft.json", _this.addShaft);
+  loader.load("v2/nose.json", _this.addNose);
+  loader.load("v2/combustion.json", _this.addCompressor);
+  loader.load("v2/compressor2.json", _this.addCompressor2);
+  loader.load("v2/compressor1.json", _this.addCompbustion);
+  loader.load("v2/turbine.json", _this.addTurbine);
 
   var directionalLight = new THREE.DirectionalLight(0xffffff, 0.5);
   directionalLight.position.set(0, 1, 0);
