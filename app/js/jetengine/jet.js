@@ -137,6 +137,7 @@ function Jet($con) {
   camera.position.z= 150;
 
 
+  renderer.setClearColor( 0x969DAC, 1);
   _this.animate();
 }
 
@@ -144,6 +145,14 @@ function Jet($con) {
 Jet.prototype.getMaterials = function () {
   $.getJSON("json/materials.json", function (data) {
     materialsData = data;
+
+    var i = 1;
+    $("#material_title").html("<i class='fa fa-info-circle fa-fw'></i> " + materialsData.materials[i].name);
+    $("#material_info").html(materialsData.materials[i].description);
+    $("#material_info").append("<hr/><h4>Material Properties</h4>");
+    $("#material_info").append("<b>Melting Point: </b>" + materialsData.materials[i].melting_point + "<br/>");
+    $("#material_info").append("<b>Strength: </b>" + materialsData.materials[i].Strength + "<br/>");
+    $("#material_info").append("<b>Density: </b>" + materialsData.materials[i].Density + "<br/>");
   });
 
 };
@@ -318,9 +327,9 @@ Jet.prototype.reset = function () {
     jetEngine[i].material = new THREE.MeshNormalMaterial()
   }
 
-  camera.position.z = 200;
-  camera.position.y = 0;
-  camera.position.x = 30;
+  camera.position.x= 150;
+  camera.position.y= 40;
+  camera.position.z= 150;
   camera.lookAt(new THREE.Vector3(0, 0, 0));
 };
 
