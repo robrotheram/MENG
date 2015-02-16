@@ -113,13 +113,13 @@ function Jet($con) {
 
   loader = new THREE.JSONLoader();
 
-  loader.load("v2/fan.json", _this.addFan);
-  loader.load("v2/shaft.json", _this.addShaft);
-  loader.load("v2/nose.json", _this.addNose);
-  loader.load("v2/combustion.json", _this.addCompressor);
-  loader.load("v2/compressor2.json", _this.addCompressor2);
-  loader.load("v2/compressor1.json", _this.addCompbustion);
-  loader.load("v2/turbine.json", _this.addTurbine);
+  loader.load("js/jetengine/v2/fan.json", _this.addFan);
+  loader.load("js/jetengine/v2/shaft.json", _this.addShaft);
+  loader.load("js/jetengine/v2/nose.json", _this.addNose);
+  loader.load("js/jetengine/v2/combustion.json", _this.addCompressor);
+  loader.load("js/jetengine/v2/compressor2.json", _this.addCompressor2);
+  loader.load("js/jetengine/v2/compressor1.json", _this.addCompbustion);
+  loader.load("js/jetengine/v2/turbine.json", _this.addTurbine);
 
   var directionalLight = new THREE.DirectionalLight(0xffffff, 0.5);
   directionalLight.position.set(0, 1, 0);
@@ -143,7 +143,7 @@ function Jet($con) {
 
 
 Jet.prototype.getMaterials = function () {
-  $.getJSON("json/materials.json", function (data) {
+  $.getJSON("js/json/materials.json", function (data) {
     materialsData = data;
 
     var i = 1;
@@ -159,7 +159,7 @@ Jet.prototype.getMaterials = function () {
 
 
 Jet.prototype.getParts = function () {
-  $.getJSON("json/parts.json", function (data) {
+  $.getJSON("js/json/parts.json", function (data) {
     partsData = data;
     _this.addInfo("Nose");
   });
