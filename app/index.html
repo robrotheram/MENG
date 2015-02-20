@@ -1,7 +1,391 @@
-<h1>
-  Something is comming soon!!!!
-</h1>
-<br>
-<h2> V1 Look at a jet engine <a href="jetengine.html">here</a></h2>
-<h2> V2
-  nnnLook at a new jet engine <a href="newDesign.html">here</a></h2>
+  <!DOCTYPE html>
+  <html lang="en">
+
+  <head>
+
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="description" content="">
+      <meta name="author" content="">
+
+      <title>Freelancer - Start Bootstrap Theme</title>
+      <link href="css/main.css" rel="stylesheet" type="text/css">
+
+      <link href="http://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+      <link href="http://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+
+      <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+      <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+      <!--[if lt IE 9]>
+          <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+          <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+      <![endif]-->
+
+      <script data-main="scripts/main" src="scripts/vendor/requirejs/require.js"></script>
+  </head>
+
+  <body>
+
+  <div id="wrapper">
+
+    <!-- Sidebar -->
+    <div id="sidebar-wrapper">
+      <ul class="sidebar-nav">
+        <img src="images/swLogo.png" width="100%;" style="padding-left:20px;padding-right: 20px">
+        <li class="active">
+          <button type="submit" id="Engine" class="btn btn-primary cust-buton">Jet Engines</button>
+        </li>
+        <li>
+          <button type="submit" id="Material" class="btn btn-primary cust-buton">Materials</button>
+        </li>
+        <li>
+          <button type="submit" id="Choose" class="btn btn-primary cust-buton">Choose Parts</button>
+        </li>
+        <li>
+          <button type="submit" id="Help" class="btn btn-danger cust-buton" data-toggle="modal" data-target="#HELPModal"> Help</button>
+
+        </li>
+        <li>
+          <button type="submit" id="About" class="btn btn-default cust-buton" data-toggle="modal" data-target="#ABOUTModal"> About</button>
+
+        </li>
+        <li>
+
+        </li>
+        <li>
+
+        </li>
+      </ul>
+    </div>
+    <!-- /#sidebar-wrapper -->
+
+    <!-- Page Content -->
+    <div id="page-content-wrapper">
+
+
+      <div id="webGLROW" class="row center-container">
+        <div class="col-lg-12">
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h3 class="panel-title"><i class="fa fa-fighter-jet fa-fw"></i> Jet Engine</h3>
+            </div>
+            <div class="panel-body">
+
+              <div class="row">
+                <div class="col-md-12">
+                  <div id="jet" class="webgl img-thumbnail img-responsive"></div>
+                </div>
+              </div>
+
+              <br/>
+
+              <div class="row">
+                <div class="col-sm-3">
+                  <button type="submit" id="playbtn" class="btn btn-primary cust-buton">Play</button>
+                </div>
+                <div class="col-sm-6">
+                  <table style="margin-top:5px;" width="100%" border="0">
+                    <colgroup>
+                      <col span="1" style="width: 15%;">
+                      <col span="1" style="width: 85%;">
+                    </colgroup>
+                    <tr>
+                      <td>Thrust:</td>
+                      <td><div id="slider"></div></td>
+                    </tr>
+                  </table>
+                </div>
+                <div class="col-sm-3">
+                  <button type="submit" class="btn btn-success cust-buton" onclick="jet.reset()">Reset Model</button>
+                </div>
+              </div>
+
+
+              <br/>
+
+              <div class="row">
+                <div class="col-md-12">
+                  <table class="table table-bordered">
+                    <!--<col width="15%">-->
+                    <col width="10%">
+                    <col width="75%">
+                    <tr>
+                     <!-- <th rowspan="4" id="parIMG"></th>-->
+                      <th colspan="2" id="partName" class="text-center"><h4>Part</h4></th>
+                    </tr>
+                    <tr>
+                      <td>Description</td>
+                      <td id="PartDesc"></td>
+                    </tr>
+                    <tr>
+                      <td>Operating Systems</td>
+                      <td id="PartTmp"></td>
+                    </tr>
+                    <tr>
+                      <td>Rpm</td>
+                      <td id="PartRPM"></td>
+                    </tr>
+                  </table>
+
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- /.row -->
+
+      <div id="infoSection" class="row">
+        <div class="col-lg-12">
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h3 class="panel-title"><i class="fa fa-cog fa-spin fa-fw"></i> Controls</h3>
+            </div>
+            <div class="panel-body">
+
+              <div class="row">
+                <div class="col-md-12">
+                <table class="contact-table table table-curved table-striped">
+
+                  <tr class="tr-center">
+                    <td><b>Steel</b></td>
+                    <td><b>Nickle</b></td>
+                    <td><b>Titainum</b></td>
+                    <td><b>Wood</b></td>
+                    <td><b>Carbon Fibre</b></td>
+                    <td><b>Cast Iron</b></td>
+
+                  </tr>
+                  <tr>
+                    <td>
+                      <img  src="images/metal3.jpg"
+                            id="steelImage"
+                            class="img img-circle img-responsive img-thumbnail materialImg"
+                            />
+                    </td>
+                    <td>
+                      <img  src="images/aluminium.jpg"
+                            id="nickelImage"
+                            class="img img-circle img-responsive img-thumbnail materialImg"/>
+                    </td>
+                    <td>
+                      <img  src="images/titainum.jpg"
+                            id="titainumImage"
+                            class="img img-circle img-responsive img-thumbnail materialImg"/>
+                    </td>
+                    <td>
+                      <img  src="images/crate.jpg"
+                            id="woodImage"
+                            class="img img-circle img-responsive img-thumbnail materialImg"/>
+                    </td>
+                    <td>
+                      <img  src="images/carbon-texture.png"
+                            id="carbomImage"
+                            class="img img-circle img-responsive img-thumbnail materialImg"/>
+                    </td>
+                    <td>
+                      <img  src="images/castIron.jpg"
+                            id="ironImage"
+                            class="img img-circle img-responsive img-thumbnail materialImg"/>
+                    </td>
+                  </tr>
+                </table>
+              </div>
+              </div>
+
+
+              <div class="row" style="padding: 10px;">
+                <div class="panel panel-default">
+                  <div class="panel-heading">
+                    <h3 class="panel-title" id="material_title"><i class="fa fa-info-circle fa-fw"></i> Material Info
+                    </h3>
+                  </div>
+                  <div class="panel-body" id="material_info">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <!-- /.container-fluid -->
+
+
+
+
+
+      <div id="chooseSection" class="row">
+        <div class="col-lg-12">
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h3 class="panel-title"><i class="fa fa-cog fa-spin fa-fw"></i> Choose Material Section</h3>
+            </div>
+            <div class="panel-body">
+
+
+              <div class="row">
+                <div class="col-md-12">
+                  <table class="contact-table table table-curved table-striped">
+
+                    <tr class="tr-center">
+                      <td><b>Nose Cone</b></td>
+                      <td><b>Fan</b></td>
+                      <td><b>Compressor</b></td>
+                      <td><b>Combustion</b></td>
+                      <td><b>Shaft</b></td>
+                      <td><b>Turnbine</b></td>
+
+                    </tr>
+                    <tr>
+                      <td>
+                        <img class="partIMG img img-responsive img-thumbnail materialImg" src="images/parts/nosecone.png"
+                             width="100%" align="middle">
+                      </td>
+                      <td>
+                        <img class="partIMG img img-responsive img-thumbnail materialImg" src="images/parts/fanblade.png"
+                             width="100%" align="middle">
+                      </td>
+                      <td>
+                        <img class="partIMG img img-responsive img-thumbnail materialImg" src="images/parts/compresor.png"
+                             width="100%" align="middle">
+                      </td>
+                      <td>
+                        <img class="partIMG img img-responsive img-thumbnail materialImg" src="images/parts/combusture.png"
+                             width="100%" align="middle">
+                      </td>
+                      <td>
+                        <img class="partIMG img img-responsive img-thumbnail materialImg" src="images/parts/shaft.png"
+                             width="100%" align="middle">
+                      </td>
+                      <td>
+                        <img class="partIMG img img-responsive img-thumbnail materialImg" src="images/parts/turbine.png"
+                             width="100%" align="middle">
+                      </td>
+                    </tr>
+
+                    <tr>
+                      <td><div class="drop-thing img-thumbnail"></div></td>
+                      <td><div class="drop-thing img-thumbnail"></div></td>
+                      <td><div class="drop-thing img-thumbnail"></div></td>
+                      <td><div class="drop-thing img-thumbnail"></div></td>
+                      <td><div class="drop-thing img-thumbnail"></div></td>
+                      <td><div class="drop-thing img-thumbnail"></div></td>
+                    </tr>
+                  </table>
+                  </div>
+                </div>
+
+
+              <div class="row">
+                <div class="col-md-12">
+                  <table class="contact-table table table-curved table-striped">
+                    <tr class="tr-center">
+                      <td><b>Steel</b></td>
+                      <td><b>Nickle</b></td>
+                      <td><b>Titainum</b></td>
+                      <td><b>Wood</b></td>
+                      <td><b>Carbon Fibre</b></td>
+                      <td><b>Cast Iron</b></td>
+
+                    </tr>
+                    <tr>
+                      <td>
+                        <img src="images/metal3.jpg"
+                             class=" scrollToTOP img img-circle img-responsive img-thumbnail materialImg" />
+                      </td>
+                      <td>
+                        <img src="images/aluminium.jpg"
+                             class=" scrollToTOP img img-circle img-responsive img-thumbnail materialImg"/>
+                      </td>
+                      <td>
+                        <img src="images/titainum.jpg"
+                             class=" scrollToTOP img img-circle img-responsive img-thumbnail materialImg"/>
+                      </td>
+                      <td>
+                        <img src="images/crate.jpg"
+                             class=" scrollToTOP img img-circle img-responsive img-thumbnail materialImg"/>
+                      </td>
+                      <td>
+                        <img src="images/carbon-texture.png"
+                             class="scrollToTOP img img-circle img-responsive img-thumbnail materialImg"/>
+                      </td>
+                      <td>
+                        <img src="images/castIron.jpg"
+                             class="scrollToTOP img img-circle img-responsive img-thumbnail materialImg"/>
+                      </td>
+                    </tr>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <!-- /.container-fluid -->
+
+
+    </div>
+    <!-- /#page-content-wrapper -->
+
+  </div>
+
+
+
+
+  <!-- HELP Modal -->
+  <div class="modal fade" id="HELPModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="false">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header" style="background-color: #005f8d; color: #ffffff">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title">Help</h4>
+        </div>
+        <div class="modal-body">
+          <h4>Welcome to the help section.</h4>
+          <p>Site needs:</p>
+          <ul>
+            <li>Modern Day Browser</li>
+          </ul>
+          <h4>How to use the site</h4>
+          <ul>
+            <li>View the Jet Engine learn about each part</li>
+            <li>View the Materials Section</li>
+            <li>Click on choose and drag the right material to the correct part </li>
+          </ul>
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ABOUT Modal -->
+  <div class="modal fade" id="ABOUTModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="false">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header" style="background-color: #005f8d; color: #ffffff">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title" >About</h4>
+        </div>
+        <div class="modal-body">
+          more info commig soon
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+
+        </div>
+      </div>
+    </div>
+  </div>
+  </body>
+  </html>

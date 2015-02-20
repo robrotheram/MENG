@@ -2,8 +2,8 @@ node_modules
 dist
 test/temp
 .sass-cache
-app/bower_components
-app/scripts/vendor
+app-old/bower_components
+app/scripts/vendor/
 .tmp
 .idea
 test/bower_components/

@@ -1,6 +1,3 @@
-/**
- * Created by robert on 16/02/15.
- */
 ({
   appDir: "../",
   baseUrl: "scripts",
@@ -8,4 +5,4 @@
   name: 'main',
   mainConfigFile: '../scripts/main.js',
   optimizeCss: 'standard'
-});
+})
