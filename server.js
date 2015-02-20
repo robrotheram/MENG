@@ -2,20 +2,34 @@
 var server_port = process.env.OPENSHIFT_NODEJS_PORT || 8080;
 var server_ip_address = process.env.OPENSHIFT_NODEJS_IP || '127.0.0.1';
 
-var static = require('node-static');
+var paperboy = require('paperboy'),
+  http = require('http'),
+  path = require('path');
 
-var fileServer = new static.Server('./app');
-var sys = require("sys");
-require('http').createServer(function (request, response) {
-  request.addListener('end', function () {
-    fileServer.serve(request, response, function (err, result) {
-      if (err) { // There was an error serving the file
-        sys.error("Error serving " + request.url + " - " + err.message);
+var webroot = path.join(__dirname, 'app'),
+  port = server_port;
 
-        // Respond to the client
-        response.writeHead(err.status, err.headers);
-        response.end();
-      }
+http.createServer(function (req, res) {
+  var ip = server_ip_address;
+  paperboy
+    .deliver(webroot, req, res)
+    .addHeader('X-Powered-By', 'Atari')
+    .before(function () {
+      console.log('Request received for ' + req.url);
+    })
+    .after(function (statusCode) {
+      console.log(statusCode + ' - ' + req.url + ' ' + ip);
+    })
+    .error(function (statusCode, msg) {
+      console.log([statusCode, msg, req.url, ip].join(' '));
+      res.writeHead(statusCode, {'Content-Type': 'text/plain'});
+      res.end('Error [' + statusCode + ']');
+    })
+    .otherwise(function (err) {
+      console.log([404, err, req.url, ip].join(' '));
+      res.writeHead(404, {'Content-Type': 'text/plain'});
+      res.end('Error 404: File not found');
     });
-  }).resume();
-}).listen(server_port);
+}).listen(port);
+
+console.log('paperboy on his round at http://localhost:' + port);
