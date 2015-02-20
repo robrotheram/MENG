@@ -56,9 +56,12 @@ define(["jquery",
       range: "min",
       value: 37,
       min: 1,
-      max: 100,
+      step: 1,
+      max: 10,
       slide: function (event, ui) {
-        jetEngineView.speed = (ui.value / 100);
+        var value = (ui.value / 100);
+        console.log(value);
+        jetEngineView.speed = (value);
       }
     });
 
