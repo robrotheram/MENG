@@ -52,5 +52,14 @@ define(["jquery",
     $("#chooseSection").width(0);
     $("#chooseSection").css({opacity: 0.5});
 
-    $("#slider").slider();
+    $("#slider").slider({
+      range: "min",
+      value: 37,
+      min: 1,
+      max: 100,
+      slide: function (event, ui) {
+        jetEngineView.speed = (ui.value / 100);
+      }
+    });
+
   }); // End of require
