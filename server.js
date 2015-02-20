@@ -1,25 +1,21 @@
 #!/usr/bin/env node
-var debug = require('debug')('node-test');
-var app = require('./app');
-
-
 var server_port = process.env.OPENSHIFT_NODEJS_PORT || 8080;
-var server_ip_address = process.env.OPENSHIFT_NODEJS_IP || '192.168.0.7';
+var server_ip_address = process.env.OPENSHIFT_NODEJS_IP || '127.0.0.1';
 
-app.set('port', server_port);
-server = app.listen(app.get('port'), server_ip_address,  function() { debug('Express server listening on port ' + server.address().port);});
+var static = require('node-static');
 
-var os = require('os');
+var fileServer = new static.Server('./app');
+var sys = require("sys");
+require('http').createServer(function (request, response) {
+  request.addListener('end', function () {
+    fileServer.serve(request, response, function (err, result) {
+      if (err) { // There was an error serving the file
+        sys.error("Error serving " + request.url + " - " + err.message);
 
-var interfaces = os.networkInterfaces();
-var addresses = [];
-for (var k in interfaces) {
-  for (var k2 in interfaces[k]) {
-    var address = interfaces[k][k2];
-    if (address.family === 'IPv4' && !address.internal) {
-      addresses.push(address.address);
-    }
-  }
-}
-
-console.log(addresses);
+        // Respond to the client
+        response.writeHead(err.status, err.headers);
+        response.end();
+      }
+    });
+  }).resume();
+}).listen(server_port);
