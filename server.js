@@ -6,8 +6,7 @@ var paperboy = require('paperboy'),
   http = require('http'),
   path = require('path');
 
-var webroot = path.join(__dirname, 'app'),
-  port = server_port;
+var webroot = path.join(__dirname, 'app');
 
 http.createServer(function (req, res) {
   var ip = server_ip_address;
@@ -30,6 +29,6 @@ http.createServer(function (req, res) {
       res.writeHead(404, {'Content-Type': 'text/plain'});
       res.end('Error 404: File not found');
     });
-}).listen(port);
+}).listen(server_port, server_ip_address);
 
-console.log('paperboy on his round at http://localhost:' + port);
+console.log('paperboy on his round at ' + server_ip_address + ':' + server_port);
