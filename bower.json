@@ -4,7 +4,7 @@
   "dependencies": {
     "requirejs": "latest",
     "jquery": "latest",
-    "jquery-ui": "latest",
+    "jquery-ui": "",
     "angular": "latest",
     "threejs": "latest",
     "three.js-controls": "latest",

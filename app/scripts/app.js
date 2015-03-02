@@ -3,11 +3,11 @@ define(["jquery",
     "jquery-ui",
     'models/jetEngine',
     'bootstrap',
-    'jquery-ui-touch',
     'conrollers/app',
     'conrollers/jetenginetest'],
 
   function ($, angular) {
+    require(["jquery-ui-touch"]);
 
     var module = angular.module("myApp", []);
     angular.bootstrap(document, ["myApp"]);
