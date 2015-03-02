@@ -69,12 +69,22 @@ define(['jquery', 'three', 'models/3DCanvas', 'models/modelManager', 'three-cont
             shininess: 50
           });
           jetEngineView.modelInfomation.setPartsInfo("Compressor");
+        } else if ((obj.name == "Shaft") || (obj.name == "Nose")) {
+          jetEngineView.models.models["Shaft"].material = new THREE.MeshPhongMaterial({
+            map: texture,
+            shininess: 50
+          });
+          jetEngineView.models.models["Nose"].material = new THREE.MeshPhongMaterial({
+            map: texture,
+            shininess: 50
+          });
+          jetEngineView.modelInfomation.setPartsInfo("Shaft");
         } else {
           obj.material = new THREE.MeshPhongMaterial({map: texture, shininess: 50});
           jetEngineView.modelInfomation.setPartsInfo(intersects[0].object.name);
         }
       }
-    },
+    }
 
   }
 });

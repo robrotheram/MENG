@@ -1,4 +1,4 @@
-define(['jquery', 'jquery-ui'], function ($) {
+define(['jquery', 'jquery-ui', 'jquery-ui-touch'], function ($) {
   $(".scrollToTOP").draggable({
     appendTo: "body",
     activeClass: "draggable",

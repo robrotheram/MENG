@@ -9,6 +9,7 @@
     "threejs": "latest",
     "three.js-controls": "latest",
     "bootstrap": "latest",
-    "fontawesome": "latest"
+    "fontawesome": "latest",
+    "jqueryui-touch-punch": ""
   }
 }

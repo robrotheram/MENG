@@ -3,6 +3,7 @@ define(["jquery",
     "jquery-ui",
     'models/jetEngine',
     'bootstrap',
+    'jquery-ui-touch',
     'conrollers/app',
     'conrollers/jetenginetest'],
 
@@ -25,22 +26,83 @@ define(["jquery",
 
 
     $("#steelImage").click(function (event) {
-      jetEngineView.modelInfomation.setMaterialInfo(1);
+      jetEngineView.modelInfomation.setMaterialInfo("Steel");
     });
     $("#nickelImage").click(function (event) {
-      jetEngineView.modelInfomation.setMaterialInfo(0);
+      jetEngineView.modelInfomation.setMaterialInfo("Nickel superalloy");
     });
     $("#titainumImage").click(function (event) {
-      jetEngineView.modelInfomation.setMaterialInfo(2);
+      jetEngineView.modelInfomation.setMaterialInfo("Titanium alloy");
     });
     $("#woodImage").click(function (event) {
-      jetEngineView.modelInfomation.setMaterialInfo(3);
+      jetEngineView.modelInfomation.setMaterialInfo("Wood");
     });
     $("#carbomImage").click(function (event) {
-      jetEngineView.modelInfomation.setMaterialInfo(3);
+      jetEngineView.modelInfomation.setMaterialInfo("Carbon fibre");
     });
-    $("#ironImage").click(function (event) {
-      jetEngineView.modelInfomation.setMaterialInfo(3);
+
+
+    $("#resetAnswer").click(function (event) {
+
+      $("#FanCheck").css('background-color', '#FFF');
+      $("#FanCheck").empty();
+      $("#CompressorCheck").css('background-color', '#FFF');
+      $("#CompressorCheck").empty();
+      $("#CombustionCheck").css('background-color', '#FFF');
+      $("#CombustionCheck").empty();
+      $("#ShaftCheck").css('background-color', '#FFF');
+      $("#ShaftCheck").empty();
+      $("#TurbineCheck").css('background-color', '#FFF');
+      $("#TurbineCheck").empty();
+
+    });
+
+
+    $("#checkAnswer").click(function (event) {
+      var count = 0;
+      if ($('#FanCheck .titainum').length > 0) {
+        count++;
+        $("#FanCheck").css('background-color', '#5cb85c');
+      } else {
+        $("#FanCheck").css('background-color', '#d9534f');
+      }
+
+      if ($('#CompressorCheck .titainum').length > 0) {
+        count++;
+        $("#CompressorCheck").css('background-color', '#5cb85c');
+      } else {
+        $("#CompressorCheck").css('background-color', '#d9534f');
+      }
+
+      if ($('#CombustionCheck .nickle').length > 0) {
+        count++;
+        $("#CombustionCheck").css('background-color', '#5cb85c');
+      } else {
+        $("#CombustionCheck").css('background-color', '#d9534f');
+      }
+
+
+      if ($('#ShaftCheck .steel').length > 0) {
+        count++;
+        $("#ShaftCheck").css('background-color', '#5cb85c');
+      } else {
+        $("#ShaftCheck").css('background-color', '#d9534f');
+      }
+
+
+      if ($('#TurbineCheck .nickle').length > 0) {
+        count++;
+        $("#TurbineCheck").css('background-color', '#5cb85c');
+      } else {
+        $("#TurbineCheck").css('background-color', '#d9534f');
+      }
+
+      if (count == 5) {
+        alert("You got it correct");
+      } else {
+        alert("You got it Wrong look again");
+      }
+
     });
 
 

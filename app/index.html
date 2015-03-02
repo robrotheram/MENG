@@ -119,12 +119,8 @@
                       <td id="PartDesc"></td>
                     </tr>
                     <tr>
-                      <td>Operating Systems</td>
-                      <td id="PartTmp"></td>
-                    </tr>
-                    <tr>
-                      <td>Rpm</td>
-                      <td id="PartRPM"></td>
+                      <td>Material Requirements</td>
+                      <td id="PartRequirement"></td>
                     </tr>
                   </table>
 
@@ -155,7 +151,6 @@
                     <td><b>Titainum</b></td>
                     <td><b>Wood</b></td>
                     <td><b>Carbon Fibre</b></td>
-                    <td><b>Cast Iron</b></td>
 
                   </tr>
                   <tr>
@@ -185,11 +180,6 @@
                             id="carbomImage"
                             class="img img-circle img-responsive img-thumbnail materialImg"/>
                     </td>
-                    <td>
-                      <img  src="images/castIron.jpg"
-                            id="ironImage"
-                            class="img img-circle img-responsive img-thumbnail materialImg"/>
-                    </td>
                   </tr>
                 </table>
               </div>
@@ -203,6 +193,22 @@
                     </h3>
                   </div>
                   <div class="panel-body" id="material_info">
+                    <table class="contact-table table table-curved table-striped" style="text-align: center;">
+                      <tr>
+                        <td>Density</td>
+                        <td>Strength</td>
+                        <td>High temperature capability</td>
+                        <td>Oxidation resistance</td>
+                        <td>Corrosion resistance</td>
+                      </tr>
+                      <tr>
+                        <td id="Material_Density"></td>
+                        <td id="Material_Strength"></td>
+                        <td id="Material_Temperature"></td>
+                        <td id="Material_Oxidation"></td>
+                        <td id="Material_Corrosion"></td>
+                      </tr>
+                    </table>
                   </div>
                 </div>
               </div>
@@ -232,7 +238,6 @@
                   <table class="contact-table table table-curved table-striped">
 
                     <tr class="tr-center">
-                      <td><b>Nose Cone</b></td>
                       <td><b>Fan</b></td>
                       <td><b>Compressor</b></td>
                       <td><b>Combustion</b></td>
@@ -241,10 +246,6 @@
 
                     </tr>
                     <tr>
-                      <td>
-                        <img class="partIMG img img-responsive img-thumbnail materialImg" src="images/parts/nosecone.png"
-                             width="100%" align="middle">
-                      </td>
                       <td>
                         <img class="partIMG img img-responsive img-thumbnail materialImg" src="images/parts/fanblade.png"
                              width="100%" align="middle">
@@ -268,17 +269,35 @@
                     </tr>
 
                     <tr>
-                      <td><div class="drop-thing img-thumbnail"></div></td>
-                      <td><div class="drop-thing img-thumbnail"></div></td>
-                      <td><div class="drop-thing img-thumbnail"></div></td>
-                      <td><div class="drop-thing img-thumbnail"></div></td>
-                      <td><div class="drop-thing img-thumbnail"></div></td>
-                      <td><div class="drop-thing img-thumbnail"></div></td>
+                      <td>
+                        <div id="FanCheck" class="drop-thing img-thumbnail"></div>
+                      </td>
+                      <td>
+                        <div id="CompressorCheck" class="drop-thing img-thumbnail"></div>
+                      </td>
+                      <td>
+                        <div id="CombustionCheck" class="drop-thing img-thumbnail"></div>
+                      </td>
+                      <td>
+                        <div id="ShaftCheck" class="drop-thing img-thumbnail"></div>
+                      </td>
+                      <td>
+                        <div id="TurbineCheck" class="drop-thing img-thumbnail"></div>
+                      </td>
                     </tr>
                   </table>
                   </div>
                 </div>
+              <div class="row">
+                <div class="col-md-6">
+                  <button type="submit" id="checkAnswer" class="btn btn-primary cust-buton">Check Answer</button>
+                </div>
 
+                <div class="col-md-6">
+                  <button type="submit" id="resetAnswer" class="btn btn-info cust-buton">Reset Answer</button>
+                </div>
+              </div>
+              <br/>
 
               <div class="row">
                 <div class="col-md-12">
@@ -289,33 +308,28 @@
                       <td><b>Titainum</b></td>
                       <td><b>Wood</b></td>
                       <td><b>Carbon Fibre</b></td>
-                      <td><b>Cast Iron</b></td>
 
                     </tr>
                     <tr>
                       <td>
                         <img src="images/metal3.jpg"
-                             class=" scrollToTOP img img-circle img-responsive img-thumbnail materialImg" />
+                             class="steel scrollToTOP img img-circle img-responsive img-thumbnail materialImg"/>
                       </td>
                       <td>
                         <img src="images/aluminium.jpg"
-                             class=" scrollToTOP img img-circle img-responsive img-thumbnail materialImg"/>
+                             class="nickle scrollToTOP img img-circle img-responsive img-thumbnail materialImg"/>
                       </td>
                       <td>
                         <img src="images/titainum.jpg"
-                             class=" scrollToTOP img img-circle img-responsive img-thumbnail materialImg"/>
+                             class="titainum scrollToTOP img img-circle img-responsive img-thumbnail materialImg"/>
                       </td>
                       <td>
                         <img src="images/crate.jpg"
-                             class=" scrollToTOP img img-circle img-responsive img-thumbnail materialImg"/>
+                             class="wood scrollToTOP img img-circle img-responsive img-thumbnail materialImg"/>
                       </td>
                       <td>
                         <img src="images/carbon-texture.png"
-                             class="scrollToTOP img img-circle img-responsive img-thumbnail materialImg"/>
-                      </td>
-                      <td>
-                        <img src="images/castIron.jpg"
-                             class="scrollToTOP img img-circle img-responsive img-thumbnail materialImg"/>
+                             class="carbon scrollToTOP img img-circle img-responsive img-thumbnail materialImg"/>
                       </td>
                     </tr>
                   </table>
@@ -351,12 +365,20 @@
           <p>Site needs:</p>
           <ul>
             <li>Modern Day Browser</li>
+            <li>Must Support WebGL, If in doubt go here: <a href="https://get.webgl.org/">https://get.webgl.org/</a>
+            </li>
           </ul>
           <h4>How to use the site</h4>
           <ul>
             <li>View the Jet Engine learn about each part</li>
+            <li>Click and drag to rotate the Jet Engine</li>
+            <hr/>
             <li>View the Materials Section</li>
             <li>Click on choose and drag the right material to the correct part </li>
+            <hr/>
+            <li>View the Check</li>
+            <li>Click and drag the material image to the box under the Jet Engine component</li>
+            <li>Once you have chosen your selection click the check button to see if you are correct</li>
           </ul>
 
         </div>
@@ -378,7 +400,8 @@
           <h4 class="modal-title" >About</h4>
         </div>
         <div class="modal-body">
-          more info commig soon
+          Application written by <a href="http://robrotheram.com">Robert Fletcher</a> as part of Computer Science Master
+          Degree. 2014
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
