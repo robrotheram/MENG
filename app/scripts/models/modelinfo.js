@@ -21,7 +21,7 @@ define(['jquery'], function () {
     setMaterialInfo: function (matName) {
       for (var i = 0; i < this.materialsData.materials.length; i++) {
         if (this.materialsData.materials[i].name == matName) {
-          $("#material_title").html("<i class='fa fa-info-circle fa-fw'></i> " + this.materialsData.materials[i].name);
+          $("#Material_Name").html( this.materialsData.materials[i].name);
           $("#Material_Density").html(this.materialsData.materials[i].density);
           $("#Material_Strength").html(this.materialsData.materials[i].strength);
           $("#Material_Temperature").html(this.materialsData.materials[i].temperature);

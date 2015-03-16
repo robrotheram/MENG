@@ -6,10 +6,40 @@
 
 /* Toggle Styles */
 
-body {
-  background-image: url("../images/carbon_fibre.png");
+html, body {
+  height: 100%;
 }
 
+
+body {
+  background-image: url("../images/carbon_fibre.png");
+
+}
+
+nav{
+  margin-top: 0px;
+}
+nav>.container{
+
+  width: 100%;
+  padding: 0px;
+  margin-left: 10px;
+}
+body>.container{
+  min-height: 100%;
+  width: 100%;
+  padding: 0px;
+  height: 100%;
+}
+
+
+.navbar-custom{
+  margin: 0px;
+  width: 100%;
+  padding: 0px;
+  margin-top: 0px;
+  background-color: #0073ea;
+}
 #wrapper {
   padding-left: 0;
   padding-left: 110px;

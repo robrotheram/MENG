@@ -3,8 +3,13 @@ define(['jquery', 'three', 'models/loader'], function () {
     models: {},
     lights: {},
     scene: null,
+    texture:THREE.ImageUtils.loadTexture('images/metal3.jpg'),
     load: function (s) {
       this.scene = s;
+      this.texture = THREE.ImageUtils.loadTexture('images/metal3.jpg');
+      this.texture.wrapS = this.texture.wrapT = THREE.RepeatWrapping;
+
+
       var loader = new THREE.JSONLoader();
       loader.load("scripts/data/JetEngine/fan.json", addFan);
       loader.load("scripts/data/JetEngine/shaft.json", addShaft);
@@ -30,8 +35,12 @@ define(['jquery', 'three', 'models/loader'], function () {
     },
   };
   function addFan(geometry, materials) {
-    var material = new THREE.MeshNormalMaterial();
-    model = new THREE.Mesh(geometry, material);
+    materials = new THREE.MeshPhongMaterial({
+      map: this.texture,
+      shininess: 50,
+      shading: THREE.FlatShading
+    });
+    model = new THREE.Mesh(geometry, materials);
     model.scale.set(15, 15, 15);
     var name = 'Fan';
     model.name = name;
@@ -41,8 +50,12 @@ define(['jquery', 'three', 'models/loader'], function () {
   }
 
   function addNose(geometry, materials) {
-    var material = new THREE.MeshNormalMaterial();
-    model = new THREE.Mesh(geometry, material);
+    materials = new THREE.MeshPhongMaterial({
+      map: this.texture,
+      shininess: 50,
+      shading: THREE.FlatShading
+    });
+    model = new THREE.Mesh(geometry, materials);
     model.scale.set(15, 15, 15);
     model.name = 'Nose';
     model.position.set(0, 0, 0);
@@ -51,8 +64,12 @@ define(['jquery', 'three', 'models/loader'], function () {
   }
 
   function addShaft(geometry, materials) {
-    var material = new THREE.MeshNormalMaterial();
-    model = new THREE.Mesh(geometry, material);
+    materials = new THREE.MeshPhongMaterial({
+      map: this.texture,
+      shininess: 50,
+      shading: THREE.FlatShading
+    });
+    model = new THREE.Mesh(geometry, materials);
     model.scale.set(15, 15, 15);
     model.name = 'Shaft';
     model.position.set(0, 0, 0);
@@ -61,8 +78,12 @@ define(['jquery', 'three', 'models/loader'], function () {
   }
 
   function addCompressor(geometry, materials) {
-    var material = new THREE.MeshNormalMaterial();
-    model = new THREE.Mesh(geometry, material);
+    materials = new THREE.MeshPhongMaterial({
+      map: this.texture,
+      shininess: 50,
+      shading: THREE.FlatShading
+    });
+    model = new THREE.Mesh(geometry, materials);
     model.scale.set(15, 15, 15);
     model.name = 'Compressor';
     model.position.set(0, 0, 0);
@@ -71,8 +92,12 @@ define(['jquery', 'three', 'models/loader'], function () {
   }
 
   function addCompressor2(geometry, materials) {
-    var material = new THREE.MeshNormalMaterial();
-    model = new THREE.Mesh(geometry, material);
+    materials = new THREE.MeshPhongMaterial({
+      map: this.texture,
+      shininess: 50,
+      shading: THREE.FlatShading
+    });
+    model = new THREE.Mesh(geometry, materials);
     model.scale.set(15, 15, 15);
     model.name = 'Compressor2';
     model.position.set(0, 0, 0);
@@ -81,8 +106,12 @@ define(['jquery', 'three', 'models/loader'], function () {
   }
 
   function addCompbustion(geometry, materials) {
-    var material = new THREE.MeshNormalMaterial();
-    model = new THREE.Mesh(geometry, material);
+    materials = new THREE.MeshPhongMaterial({
+      map: this.texture,
+      shininess: 50,
+      shading: THREE.FlatShading
+    });
+    model = new THREE.Mesh(geometry, materials);
     model.scale.set(15, 15, 15);
     model.name = 'Combustion';
     model.position.set(0, 0, 0);
@@ -91,8 +120,12 @@ define(['jquery', 'three', 'models/loader'], function () {
   }
 
   function addTurbine(geometry, materials) {
-    var material = new THREE.MeshNormalMaterial();
-    model = new THREE.Mesh(geometry, material);
+    materials = new THREE.MeshPhongMaterial({
+      map: this.texture,
+      shininess: 50,
+      shading: THREE.FlatShading
+    });
+    model = new THREE.Mesh(geometry, materials);
     model.scale.set(15, 15, 15);
     model.name = 'Turbine';
     model.position.set(0, 0, 0);

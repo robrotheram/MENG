@@ -55,32 +55,23 @@ define(['jquery', 'three', 'models/3DCanvas', 'models/modelManager', 'three-cont
       jetEngineArr = jetEngineView.models.convertToArray();
       intersects = jetEngineView.raycaster.intersectObjects(jetEngineArr);
       for (var modelID in jetEngineView.models.models) {
-        jetEngineView.models.models[modelID].material = new THREE.MeshNormalMaterial();
+        jetEngineView.models.models[modelID].material = new THREE.MeshPhongMaterial({
+        map: texture,
+          shininess: 50
+      });
       }
       if (intersects.length > 0) {
         obj = intersects[0].object;
         if ((obj.name == "Compressor") || (obj.name == "Compressor2")) {
-          jetEngineView.models.models["Compressor"].material = new THREE.MeshPhongMaterial({
-            map: texture,
-            shininess: 50
-          });
-          jetEngineView.models.models["Compressor2"].material = new THREE.MeshPhongMaterial({
-            map: texture,
-            shininess: 50
-          });
+          jetEngineView.models.models["Compressor"].material = new THREE.MeshNormalMaterial();
+          jetEngineView.models.models["Compressor2"].material = new THREE.MeshNormalMaterial();
           jetEngineView.modelInfomation.setPartsInfo("Compressor");
         } else if ((obj.name == "Shaft") || (obj.name == "Nose")) {
-          jetEngineView.models.models["Shaft"].material = new THREE.MeshPhongMaterial({
-            map: texture,
-            shininess: 50
-          });
-          jetEngineView.models.models["Nose"].material = new THREE.MeshPhongMaterial({
-            map: texture,
-            shininess: 50
-          });
+          jetEngineView.models.models["Shaft"].material = new THREE.MeshNormalMaterial();
+          jetEngineView.models.models["Nose"].material = new THREE.MeshNormalMaterial();
           jetEngineView.modelInfomation.setPartsInfo("Shaft");
         } else {
-          obj.material = new THREE.MeshPhongMaterial({map: texture, shininess: 50});
+          obj.material = new THREE.MeshNormalMaterial();
           jetEngineView.modelInfomation.setPartsInfo(intersects[0].object.name);
         }
       }
