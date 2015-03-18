@@ -36,6 +36,7 @@ define(['jquery', 'three', 'models/3DCanvas', 'models/modelManager', 'three-cont
     },
     models: modelManager,
     vector: new THREE.Vector3(),
+    testnumber:100,
     raycaster: new THREE.Raycaster(),
     outercontainer: null,
     speed: 0.02,
@@ -75,7 +76,7 @@ define(['jquery', 'three', 'models/3DCanvas', 'models/modelManager', 'three-cont
           jetEngineView.modelInfomation.setPartsInfo(intersects[0].object.name);
         }
       }
-    }
+    },
 
   }
 });
