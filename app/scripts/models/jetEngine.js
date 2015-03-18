@@ -44,6 +44,12 @@ define(['jquery', 'three', 'models/3DCanvas', 'models/modelManager', 'three-cont
     load: function () {
       this.models.load(this.renderer.scene);
     },
+    reset: function () {
+      this.play = false;
+      this.renderer.camera.position.x = 150;
+      this.renderer.camera.position.y = 40;
+      this.renderer.camera.position.z = 150;
+    },
     selectPart: function (event) {
       var mouse = {x: 0, y: 0};
       mouse.x = ((event.clientX - jetEngineView.outercontainer.offset().left) / jetEngineView.outercontainer.width() ) * 2 - 1;

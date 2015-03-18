@@ -2,4 +2,4 @@
 cd ~/app-root/repo/
 HOME=config/ bower install
 cd ~/app-root/repo/app/
-./build/build.sh
+#./build/build.sh

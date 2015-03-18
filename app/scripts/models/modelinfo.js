@@ -1,10 +1,26 @@
 define(['jquery'], function () {
   modelinfo = {
+    selectedPartID: null,
+    selectedMaterial: {},
     materialsData: null,
     partsData: null,
     init: function () {
       this.getMaterials();
       this.getParts();
+    },
+    check: function () {
+
+      for (var i = 0; i < this.partsData.jetEngineParts.length; i++) {
+        if (this.partsData.jetEngineParts[i].name == this.selectedPartID) {
+          if (this.partsData.jetEngineParts[i].correctMat == this.selectedMaterial[this.selectedPartID].id) {
+
+            $("#FanCheck").css('background-color', '#5cb85c');
+          } else {
+            $("#FanCheck").css('background-color', '#d9534f');
+          }
+        }
+      }
+      console.log(this.selectedMaterial[this.selectedPartID].id + " ->" + this.selectedPartID);
     },
     getMaterials: function () {
       $.getJSON("scripts/data/Info/materials.json", function (data) {
@@ -16,6 +32,7 @@ define(['jquery'], function () {
       $.getJSON("scripts/data/Info/parts.json", function (data) {
         modelinfo.partsData = data;
         modelinfo.setPartsInfo("Shaft");
+        console.log(modelinfo.partsData.jetEngineParts[0].correctMat);
       });
     },
     setMaterialInfo: function (matName) {
@@ -33,9 +50,15 @@ define(['jquery'], function () {
     setPartsInfo: function (objName) {
       for (var i = 0; i < this.partsData.jetEngineParts.length; i++) {
         if (this.partsData.jetEngineParts[i].name == objName) {
-
+          this.selectedPartID = objName;
           $("#partName").html("<h4> " + this.partsData.jetEngineParts[i].name + "</h4>");
-          $("#parIMG").html("<img class='scrollToTOP partIMG img img-responsive img-thumbnail' src=\"" + this.partsData.jetEngineParts[i].texture_img + "\" width='100%' align='middle''>");
+          $("#FanCheck").empty();
+          $("#FanCheck").css('background-color', '#FFF');
+          if (this.selectedMaterial[objName] != null) {
+            $("#FanCheck").html(this.selectedMaterial[objName].html);
+            this.check();
+          }
+
           $("#PartDesc").html(this.partsData.jetEngineParts[i].description);
           $("#PartRequirement").html(this.partsData.jetEngineParts[i].requirements);
           break;

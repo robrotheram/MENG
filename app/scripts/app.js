@@ -116,10 +116,10 @@ define(["jquery",
 
     $("#slider").slider({
       range: "min",
-      value: 37,
       min: 1,
-      step: 1,
+      step: 0.1,
       max: 10,
+      value: 4,
       slide: function (event, ui) {
         var value = (ui.value / 100);
         console.log(value);

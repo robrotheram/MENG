@@ -11,7 +11,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>Freelancer - Start Bootstrap Theme</title>
+  <title>Engineering Material Selection</title>
   <link href="css/main.css" rel="stylesheet" type="text/css">
 
   <link href="http://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
@@ -28,7 +28,7 @@
 
 </head>
 
-<body>
+<body style="height: 100%">
 
 <nav class="navbar navbar-default navbar-fixed-top">
   <div class="container">
@@ -55,17 +55,16 @@
 </nav>
 
 
-
-<div class="container" style="margin-top: 50px">
-  <div class="col-lg-3 pull-left" style=" padding-top:10px;height: 100%;">
-    <table class="contact-table table table-curved" style="background-color: #f5f5f5">
+<div class="container containerbody">
+  <div class="col-lg-3 pull-left" style=" padding-top:10px;height: 90%;">
+    <table class="contact-table borderless table table-curved" style="height: 100%; background-color: #f5f5f5">
       <col width="70%">
       <col width="30%">
       <tr>
         <td><b>Steel</b></td>
         <td>
           <img  src="images/metal3.jpg"
-                id="steelImage"
+                id="steel"
 
                 class="Steel scrollToTOP img img-circle img-responsive img-thumbnail materialImg"
             />
@@ -75,15 +74,15 @@
         <td><b>Nickle</b></td>
         <td>
           <img  src="images/aluminium.jpg"
-                id="nickelImage"
+                id="nickle"
                 class="Wood scrollToTOP img img-circle img-responsive img-thumbnail materialImg"/>
         </td>
       </tr>
       <tr>
-        <td><b>Titainum</b></td>
+        <td><b>Titanium</b></td>
         <td>
           <img  src="images/titainum.jpg"
-                id="titainumImage"
+                id="titanium"
                 class="scrollToTOP img img-circle img-responsive img-thumbnail materialImg"/>
         </td>
       </tr>
@@ -91,7 +90,7 @@
         <td><b>Wood</b></td>
         <td>
           <img  src="images/crate.jpg"
-                id="woodImage"
+                id="wood"
                 class="scrollToTOP img img-circle img-responsive img-thumbnail materialImg"/>
         </td>
       </tr>
@@ -99,7 +98,7 @@
         <td><b>Carbon Fibre</b></td>
         <td>
           <img  src="images/carbon-texture.png"
-                id="carbomImage"
+                id="carbon"
                 class="scrollToTOP img img-circle img-responsive img-thumbnail materialImg"/>
         </td>
       </tr>
@@ -134,33 +133,26 @@
 
       </tr>
     </table>
-
   </div>
-
-  <div class="col-lg-9 pull-right" style="height: 100%; padding: 0px">
-
-
-    <div id="webGLROW" class="row center-container" style="margin-top: 10px">
-      <div class="col-lg-12">
-        <div class="panel panel-default">
+  <div class="col-lg-9 pull-right" style="height: calc(100% - 55px); padding: 0px">
+    <div id="webGLROW" class="row center-container" style="min-height:100%;height:100%;margin-top: 10px">
+      <div class="col-lg-12" style="height: 100%">
+        <div class="panel panel-default" style="min-height:100%;height: 100%">
           <div class="panel-heading">
             <h3 class="panel-title"><i class="fa fa-fighter-jet fa-fw"></i> Jet Engine</h3>
           </div>
-          <div class="panel-body">
+          <div class="panel-body row-eq-height" style="height:100%">
 
-            <div class="row">
-              <div class="col-md-12">
+
+            <div class="col-md-12 webgl-contaner">
                 <div id="jet" class="webgl img-thumbnail img-responsive"></div>
               </div>
-            </div>
 
-            <br/>
-
-            <div class="row">
+            <div class="col-md-12 btn-container">
               <div class="col-sm-3">
                 <button type="submit" id="playbtn" class="btn btn-primary cust-buton">Play</button>
               </div>
-              <div class="col-sm-6">
+              <div class="col-sm-9">
                 <table style="margin-top:5px;" width="100%" border="0">
                   <colgroup>
                     <col span="1" style="width: 15%;">
@@ -172,41 +164,34 @@
                   </tr>
                 </table>
               </div>
-              <div class="col-sm-3">
-                <button type="submit" class="btn btn-success cust-buton" onclick="jet.reset()">Reset Model</button>
-              </div>
             </div>
 
 
-            <br/>
-
-            <div class="row">
-              <div class="col-md-12">
-                <table border="0" class="table table-bordered">
-                  <!--<col width="15%">-->
-                  <col width="20%">
-                  <col width="10%">
-                  <col width="75%">
-                  <tr>
-                    <!-- <th rowspan="4" id="parIMG"></th>-->
-                    <th rowspan="3">
-                      <div id="FanCheck" class="drop-thing img-thumbnail"></div>
-                    </th>
-                    <th colspan="2" id="partName" class="text-center"><h4>Part</h4></th>
-                  </tr>
-                  <tr>
-                    <td>Description</td>
-                    <td id="PartDesc"></td>
-                  </tr>
-                  <tr>
-                    <td>Material Requirements</td>
-                    <td id="PartRequirement"></td>
-                  </tr>
-                </table>
-
-
-              </div>
+            <div class="col-md-12 info-container">
+              <table border="0" class="table table-bordered">
+                <!--<col width="15%">-->
+                <col width="20%">
+                <col width="10%">
+                <col width="75%">
+                <tr>
+                  <!-- <th rowspan="4" id="parIMG"></th>-->
+                  <th rowspan="3">
+                    <div id="FanCheck" class="drop-thing img-thumbnail"></div>
+                  </th>
+                  <th colspan="2" id="partName" class="text-center"><h4>Part</h4></th>
+                </tr>
+                <tr>
+                  <td>Description</td>
+                  <td id="PartDesc"></td>
+                </tr>
+                <tr>
+                  <td>Material Requirements</td>
+                  <td id="PartRequirement"></td>
+                </tr>
+              </table>
             </div>
+
+
           </div>
         </div>
       </div>
@@ -275,4 +260,3 @@
 </div>
 </body>
 </html>
-

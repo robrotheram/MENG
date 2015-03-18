@@ -1,6 +1,7 @@
 {
   "materials": [
     {
+      "id": "steel",
       "name": "Steel",
       "density": 3,
       "strength": 7,
@@ -10,6 +11,7 @@
       "texture_img": "images/metal3.jpg"
     },
     {
+      "id": "nickle",
       "name": "Nickel superalloy",
       "density": 2,
       "strength": 6,
@@ -19,6 +21,7 @@
       "texture_img": "images/aluminium.jpg"
     },
     {
+      "id": "titanium",
       "name": "Titanium alloy",
       "density": 7,
       "strength": 6,
@@ -28,15 +31,17 @@
       "texture_img": "images/titainum.jpg"
     },
     {
+      "id": "carbon",
       "name": "Carbon fibre",
       "density": 8,
       "strength": 7,
       "temperature": 2,
       "oxidation": 5,
       "corrosion": 5,
-      "texture_img": "images/crate.jpg"
+      "texture_img": "images/carbon-texture.png"
     },
     {
+      "id": "wood",
       "name": "Wood",
       "density": 6,
       "strength": 5,
