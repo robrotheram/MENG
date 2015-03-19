@@ -3,7 +3,6 @@ dist
 test/temp
 .sass-cache
 app-old/bower_components
-app/scripts/vendor/
 .tmp
 .idea
 test/bower_components/
