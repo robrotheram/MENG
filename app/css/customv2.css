@@ -196,12 +196,12 @@ hr {
 
 .table-curved > thead:first-child > tr:first-child > th {
   border-bottom: 0px;
-  border-top: solid #ddd 1px;
+  border-top: solid #ddd 2px;
 }
 
 .table-curved td, .table-curved th {
-  border-left: 1px solid #ddd;
-  border-top: 1px solid #ddd;
+  border-left: 2px solid #ddd;
+  border-top: 2px solid #ddd;
 }
 
 .table-curved > :first-child > :first-child > :first-child {

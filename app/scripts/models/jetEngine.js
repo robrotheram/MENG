@@ -23,12 +23,21 @@ define(['jquery', 'three', 'models/3DCanvas', 'models/modelManager', 'three-cont
       this.renderer.controls.update();
       if (this.play) {
         console.log(this.speed);
-        this.models.models['Nose'].rotation.z -= this.speed;
-        this.models.models['Fan'].rotation.z -= this.speed;
-        this.models.models['Compressor2'].rotation.z -= this.speed;
-        this.models.models['Compressor'].rotation.z -= this.speed;
-        this.models.models['Turbine'].rotation.z -= this.speed;
-
+        if(this.models.models['Nose']){
+          this.models.models['Nose'].rotation.z -= this.speed;
+        }
+        if(this.models.models['Fan']) {
+          this.models.models['Fan'].rotation.z -= this.speed;
+        }
+        if(this.models.models['Compressor2']) {
+          this.models.models['Compressor2'].rotation.z -= this.speed;
+        }
+        if(this.models.models['Compressor']) {
+          this.models.models['Compressor'].rotation.z -= this.speed;
+        }
+        if(this.models.models['Turbine']) {
+          this.models.models['Turbine'].rotation.z -= this.speed;
+        }
       }
       requestAnimationFrame(function () {
         _this.animate();
