@@ -7,6 +7,15 @@ define(['jquery', 'jquery-ui'], function ($) {
     helper: "clone",
     start: function () {
       imageImgID = this.id;
+      $("#FanCheck").css('background-color', '#0073ea');
+    },
+    stop: function () {
+      if( $('#leftmenu').is(':empty') ) {
+        $("#FanCheck").css('background-color', '#FFF');
+      }else{
+        jetEngineView.modelInfomation.check();
+      }
+
     }
   });
 

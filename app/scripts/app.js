@@ -25,19 +25,19 @@ define(["jquery",
     });
 
 
-    $("#steelImage").click(function (event) {
+    $("#steel").click(function (event) {
       jetEngineView.modelInfomation.setMaterialInfo("Steel");
     });
-    $("#nickelImage").click(function (event) {
+    $("#nickel").click(function (event) {
       jetEngineView.modelInfomation.setMaterialInfo("Nickel superalloy");
     });
-    $("#titainumImage").click(function (event) {
+    $("#titanium").click(function (event) {
       jetEngineView.modelInfomation.setMaterialInfo("Titanium alloy");
     });
-    $("#woodImage").click(function (event) {
+    $("#wood").click(function (event) {
       jetEngineView.modelInfomation.setMaterialInfo("Wood");
     });
-    $("#carbomImage").click(function (event) {
+    $("#carbom").click(function (event) {
       jetEngineView.modelInfomation.setMaterialInfo("Carbon fibre");
     });
 

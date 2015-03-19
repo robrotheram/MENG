@@ -37,7 +37,7 @@ define(['jquery'], function () {
     },
     setMaterialInfo: function (matName) {
       for (var i = 0; i < this.materialsData.materials.length; i++) {
-        if (this.materialsData.materials[i].name == matName) {
+        if (this.materialsData.materials[i].id == matName) {
           $("#Material_Name").html( this.materialsData.materials[i].name);
           $("#Material_Density").html(this.materialsData.materials[i].density);
           $("#Material_Strength").html(this.materialsData.materials[i].strength);
