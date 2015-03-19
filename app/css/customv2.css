@@ -172,6 +172,11 @@ hr {
   text-align: center;
 }
 
+
+table.fixed { table-layout:fixed; }
+table.fixed td, th { overflow: hidden; }
+
+
 .draggable {
   width: 100px;
   height: 100px;
