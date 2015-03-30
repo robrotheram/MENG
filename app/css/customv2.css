@@ -24,7 +24,7 @@ nav>.container{
   margin-right: 10px;
 }
 
-[class*="col-"] {
+[class*="col-lg"] {
   margin:0px;
   padding:0px;
 }

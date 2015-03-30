@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<!--
+@author Daosheng Mu / https://github.com/DaoshengMu/
+-->
+<html>
+<head>
+  <title>three.js webgl - materials - tga texture</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+  <style>
+    body {
+      color: #000;
+      font-family: Monospace;
+      font-size: 13px;
+      text-align: center;
+
+      background-color: #fff;
+      margin: 0px;
+      padding: 0px;
+      overflow: hidden;
+    }
+
+    #stats {
+      position: absolute;
+      top: 0;
+      left: 0
+    }
+
+    #stats #fps {
+      background: transparent !important
+    }
+
+    #stats #fps #fpsText {
+      color: #777 !important
+    }
+
+    #stats #fps #fpsGraph {
+      display: none
+    }
+  </style>
+</head>
+<body>
+<div id="info">
+  <a href="http://threejs.org" target="_blank">three.js</a> - tga texture example
+</div>
+<script src="http://threejs.org/build/three.min.js"></script>
+<script src="http://threejs.org/examples/js/loaders/TGALoader.js"></script>
+
+<script src="http://threejs.org/examples/js/Detector.js"></script>
+<script src="http://threejs.org/examples/js/libs/stats.min.js"></script>
+<script src="http://threejs.org/examples/js/controls/OrbitControls.js"></script>
+
+<script>
+
+  if (!Detector.webgl) Detector.addGetWebGLMessage();
+
+  var SCREEN_WIDTH = window.innerWidth;
+  var SCREEN_HEIGHT = window.innerHeight;
+
+  var container, stats;
+
+  var camera, scene, renderer;
+
+  var mouseX = 0, mouseY = 0;
+
+  var windowHalfX = window.innerWidth / 2;
+  var windowHalfY = window.innerHeight / 2;
+
+  init();
+  animate();
+
+  function init() {
+
+    container = document.createElement('div');
+    document.body.appendChild(container);
+
+    renderer = new THREE.WebGLRenderer({antialias: true});
+
+    camera = new THREE.PerspectiveCamera(35, SCREEN_WIDTH / SCREEN_HEIGHT, 1, 25000);
+    camera.position.z = 200;
+
+    controls = new THREE.OrbitControls(camera);
+    controls.damping = 0.2;
+    controls.addEventListener('change', render);
+
+
+    scene = new THREE.Scene();
+
+    var light = new THREE.DirectionalLight(0xffffff, 2);
+    light.position.set(1, 1, 1);
+    scene.add(light);
+
+    var loader = new THREE.TGALoader();
+
+    // add box 1 - grey8 texture
+    var texture1 = loader.load('rb0_main.tga');
+    var material1 = new THREE.MeshPhongMaterial({color: 0xffffff, map: texture1});
+
+    var texture2 = loader.load('tyre.tga');
+    var material2 = new THREE.MeshPhongMaterial({color: 0xffffff, map: texture2});
+
+    var texture3 = loader.load('generic_main.tga');
+    var material3 = new THREE.MeshPhongMaterial({color: 0xffffff, map: texture3});
+
+    var texture4 = loader.load('rb0_wheel.tga');
+    var material4 = new THREE.MeshPhongMaterial({color: 0xffffff, map: texture4});
+
+
+    var loader = new THREE.JSONLoader();
+    var mesh1, mesh2, mesh3, mesh4, mesh5, mesh6, mesh7, mesh8, mesh9;
+    loader.load('body.json', function (geometry, materials) {
+
+      mesh1 = new THREE.Mesh(
+        geometry,
+        material1
+      );
+
+      mesh1.receiveShadow = true;
+      mesh1.castShadow = true;
+      mesh1.rotation.y = -Math.PI / 5;
+      mesh1.scale.set(50, 50, 50);
+      scene.add(mesh1);
+      render();
+    });
+
+    loader.load('front_foil.json', function (geometry, materials) {
+
+      mesh2 = new THREE.Mesh(
+        geometry,
+        material1
+      );
+
+      mesh2.receiveShadow = true;
+      mesh2.castShadow = true;
+      mesh2.rotation.y = -Math.PI / 5;
+      mesh2.scale.set(50, 50, 50);
+      scene.add(mesh2);
+      render();
+    });
+
+
+    loader.load('tyres.json', function (geometry, materials) {
+
+      mesh3 = new THREE.Mesh(
+        geometry,
+        material3
+      );
+
+      mesh3.receiveShadow = true;
+      mesh3.castShadow = true;
+      mesh3.rotation.y = -Math.PI / 5;
+      mesh3.scale.set(50, 50, 50);
+      scene.add(mesh3);
+      render();
+    });
+
+
+    loader.load('wheels.json', function (geometry, materials) {
+
+      mesh4 = new THREE.Mesh(
+        geometry,
+        material3
+      );
+
+      mesh4.receiveShadow = true;
+      mesh4.castShadow = true;
+      mesh4.rotation.y = -Math.PI / 5;
+      mesh4.scale.set(50, 50, 50);
+      scene.add(mesh4);
+      render();
+    });
+
+
+    loader.load('back_suspension.json', function (geometry, materials) {
+
+      mesh5 = new THREE.Mesh(
+        geometry,
+        material3
+      );
+
+      mesh5.receiveShadow = true;
+      mesh5.castShadow = true;
+      mesh5.rotation.y = -Math.PI / 5;
+      mesh5.scale.set(50, 50, 50);
+      scene.add(mesh5);
+      render();
+    });
+
+
+    loader.load('front_suspension.json', function (geometry, materials) {
+
+      mesh6 = new THREE.Mesh(
+        geometry,
+        material3
+      );
+
+      mesh6.receiveShadow = true;
+      mesh6.castShadow = true;
+      mesh6.rotation.y = -Math.PI / 5;
+      mesh6.scale.set(50, 50, 50);
+      scene.add(mesh6);
+      render();
+    });
+
+    loader.load('front_suspension.json', function (geometry, materials) {
+
+      mesh7 = new THREE.Mesh(
+        geometry,
+        material1
+      );
+
+      mesh7.receiveShadow = true;
+      mesh7.castShadow = true;
+      mesh7.rotation.y = -Math.PI / 5;
+      mesh7.scale.set(50, 50, 50);
+      scene.add(mesh7);
+      render();
+    });
+
+
+    loader.load('back_foil.json', function (geometry, materials) {
+
+      mesh8 = new THREE.Mesh(
+        geometry,
+        material1
+      );
+
+      mesh8.receiveShadow = true;
+      mesh8.castShadow = true;
+      mesh8.rotation.y = -Math.PI / 5;
+      mesh8.scale.set(50, 50, 50);
+      scene.add(mesh8);
+      render();
+    });
+
+
+    loader.load('breaks.json', function (geometry, materials) {
+
+      mesh9 = new THREE.Mesh(
+        geometry,
+        material3
+      );
+
+      mesh9.receiveShadow = true;
+      mesh9.castShadow = true;
+      mesh9.rotation.y = -Math.PI / 5;
+      mesh9.scale.set(50, 50, 50);
+      scene.add(mesh9);
+      render();
+    });
+
+    renderer.setSize(SCREEN_WIDTH, SCREEN_HEIGHT);
+    renderer.autoClear = false;
+    renderer.domElement.style.position = "relative";
+    container.appendChild(renderer.domElement);
+  }
+
+  function onDocumentMouseMove(event) {
+
+    mouseX = ( event.clientX - windowHalfX );
+    mouseY = ( event.clientY - windowHalfY );
+
+  }
+
+
+  function animate() {
+
+    requestAnimationFrame(animate);
+
+    render();
+    stats.update();
+
+  }
+
+  function render() {
+
+
+    renderer.render(scene, camera);
+
+  }
+
+</script>
+</body>
+</html>
+
+
