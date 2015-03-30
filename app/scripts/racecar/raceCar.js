@@ -23,23 +23,33 @@ define(['jquery', 'three', '../racecar/3DCanvas', '../racecar/modelManager', 'th
       this.renderer.controls.update();
       if (this.play) {
         console.log(this.speed);
-        if (this.models.models['Nose']) {
-          this.models.models['Nose'].rotation.z -= this.speed;
+        if (this.models.models['wheel']) {
+          this.models.models['wheel'].rotation.y -= this.speed;
         }
-        if (this.models.models['Fan']) {
-          this.models.models['Fan'].rotation.z -= this.speed;
+        if (this.models.models['tyres']) {
+          this.models.models['tyres'].rotation.y -= this.speed;
         }
-        if (this.models.models['Compressor2']) {
-          this.models.models['Compressor2'].rotation.z -= this.speed;
+        if (this.models.models['body']) {
+          this.models.models['body'].rotation.y -= this.speed;
         }
-        if (this.models.models['Compressor']) {
-          this.models.models['Compressor'].rotation.z -= this.speed;
+        if (this.models.models['frontFoil']) {
+          this.models.models['frontFoil'].rotation.y -= this.speed;
         }
-        if (this.models.models['Turbine']) {
-          this.models.models['Turbine'].rotation.z -= this.speed;
+        if (this.models.models['frontSuspension']) {
+          this.models.models['frontSuspension'].rotation.y -= this.speed;
+        }
+        if (this.models.models['backFoil']) {
+          this.models.models['backFoil'].rotation.y -= this.speed;
+        }
+        if (this.models.models['backSuspension']) {
+          this.models.models['backSuspension'].rotation.y -= this.speed;
+        }
+        if (this.models.models['breaks']) {
+          this.models.models['breaks'].rotation.y -= this.speed;
         }
       }
       //console.log(this.renderer.camera.position.x+" | "+this.renderer.camera.position.y+" | "+this.renderer.camera.position.z);
+
 
       requestAnimationFrame(function () {
         _this.animate();
@@ -50,7 +60,7 @@ define(['jquery', 'three', '../racecar/3DCanvas', '../racecar/modelManager', 'th
     testnumber: 100,
     raycaster: new THREE.Raycaster(),
     outercontainer: null,
-    speed: 0.02,
+    speed: 0.005,
     play: false,
     load: function () {
       this.models.load(this.renderer.scene);
