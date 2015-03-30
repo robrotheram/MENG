@@ -7,7 +7,9 @@ require.config({
         "bootstrap" :"vendor/bootstrap/dist/js/bootstrap.min",
         "angular" : "vendor/angular/angular.min",
         "three": "vendor/threejs/build/three.min",
-      "three-controls": "vendor/three.js-controls/src/TrackballControls"
+      "three-controls": "vendor/three.js-controls/src/TrackballControls",
+      "three-tgaloader": "racecar/tgaloader"
+
     },
     shim : {
         "jquery-ui" : {
@@ -22,7 +24,8 @@ require.config({
         },
 
         "three": { exports: 'THREE' },
-      "three-controls": {deps: ['three'], exports: 'THREE'}
+      "three-controls": {deps: ['three'], exports: 'THREE'},
+      "three-tgaloader": {deps: ['three'], exports: 'THREE'}
     }
 // End of shims
 });

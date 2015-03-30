@@ -1,4 +1,4 @@
-define(['jquery', 'three', '../racecar/loader', '../racecar/tgaloader'], function () {
+define(['jquery', 'three', '../racecar/loader', 'three-tgaloader'], function () {
   modelManager = {
     models: {},
     lights: {},
