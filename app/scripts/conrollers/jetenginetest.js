@@ -1,6 +1,5 @@
 var imageImgID;
-define(['jquery', 'jquery-ui'], function ($) {
-  require(["jquery-ui-touch"]);
+define(['jquery', 'jquery-ui', 'jquery-ui-touch'], function ($) {
   $(".scrollToTOP").draggable({
     appendTo: "body",
     activeClass: "draggable",

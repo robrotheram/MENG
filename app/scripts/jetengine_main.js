@@ -12,7 +12,11 @@ require.config({
   shim: {
     "jquery-ui": {
       deps: ["jquery"],
-      exports: 'jQueryUI'
+      exports: "$"
+    },
+    "jquery-ui-touch": {
+      exports: "$",
+      deps: ['jquery-ui']
     },
     "angular": {
       exports: "angular"

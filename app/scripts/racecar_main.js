@@ -19,6 +19,10 @@ require.config({
         "angular" : {
             exports : "angular"
         },
+      "jquery-ui-touch": {
+        exports: "$",
+        deps: ['jquery-ui']
+      },
         "bootstrap" : {
           deps: ["jquery"]
         },
