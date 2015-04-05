@@ -36,6 +36,8 @@ define(['jquery', 'three', 'three-controls'], function () {
       this.controls.staticMoving = true;
       this.controls.dynamicDampingFactor = 0.3;
       this.controls.keys = [65, 83, 68];
+      this.controls.minDistance = 20;
+      this.controls.maxDistance = 100;
     }
   }
 });
