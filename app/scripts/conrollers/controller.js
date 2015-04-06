@@ -12,7 +12,7 @@ define(['jquery', 'jquery-ui', 'jquery-ui-touch'], function ($) {
       if( $('#leftmenu').is(':empty') ) {
         $("#FanCheck").css('background-color', '#FFF');
       }else{
-        jetEngineView.modelInfomation.check();
+        _3DView.modelInfomation.check();
       }
 
     }
@@ -24,17 +24,17 @@ define(['jquery', 'jquery-ui', 'jquery-ui-touch'], function ($) {
     helper: "clone",
     drop: function (event, ui) {
 
-      //alert(jetEngineView.modelInfomation.selectedPartID);
+      //alert(_3DView.modelInfomation.selectedPartID);
       $(this).find(".materialImg").remove();
-      for (var i = 0; i < jetEngineView.modelInfomation.materialsData.materials.length; i++) {
-        if (jetEngineView.modelInfomation.materialsData.materials[i].id == imageImgID) {
-          var imgData =  '<img  src="'+jetEngineView.modelInfomation.materialsData.materials[i].texture_img+'" ' +
+      for (var i = 0; i < _3DView.modelInfomation.materialsData.materials.length; i++) {
+        if (_3DView.modelInfomation.materialsData.materials[i].id == imageImgID) {
+          var imgData = '<img  src="' + _3DView.modelInfomation.materialsData.materials[i].texture_img + '" ' +
             'id="titainumImage" class="scrollToTOP img img-circle img-responsive img-thumbnail dropedIMG materialImg"/>';
-          jetEngineView.modelInfomation.selectedMaterial[jetEngineView.modelInfomation.selectedPartID] = {
+          _3DView.modelInfomation.selectedMaterial[_3DView.modelInfomation.selectedPartID] = {
             html: imgData,
             id: imageImgID
           };
-          jetEngineView.modelInfomation.check();
+          _3DView.modelInfomation.check();
           $("#FanCheck").html(imgData);
         }
       }

@@ -4,12 +4,9 @@ define(['jquery'], function () {
     selectedMaterial: {},
     materialsData: null,
     partsData: null,
-    init: function () {
-      this.getMaterials();
-      this.getParts();
-    },
+    partJsonPath: null,
+    materialJsonPath: null,
     check: function () {
-
       for (var i = 0; i < this.partsData.jetEngineParts.length; i++) {
         if (this.partsData.jetEngineParts[i].name == this.selectedPartID) {
           if (this.partsData.jetEngineParts[i].correctMat == this.selectedMaterial[this.selectedPartID].id) {
@@ -22,23 +19,23 @@ define(['jquery'], function () {
       }
       console.log(this.selectedMaterial[this.selectedPartID].id + " ->" + this.selectedPartID);
     },
-    getMaterials: function () {
-      $.getJSON("scripts/data/Info/materials.json", function (data) {
+    getMaterials: function (init) {
+      $.getJSON(this.materialJsonPath, function (data) {
         modelinfo.materialsData = data;
-        modelinfo.setMaterialInfo("Steel");
+        modelinfo.setMaterialInfo(init);
       });
     },
-    getParts: function () {
-      $.getJSON("scripts/data/Info/parts.json", function (data) {
+    getParts: function (init) {
+      $.getJSON(this.partJsonPath, function (data) {
         modelinfo.partsData = data;
-        modelinfo.setPartsInfo("Shaft");
+        modelinfo.setPartsInfo(init);
         console.log(modelinfo.partsData.jetEngineParts[0].correctMat);
       });
     },
     setMaterialInfo: function (matName) {
       for (var i = 0; i < this.materialsData.materials.length; i++) {
         if (this.materialsData.materials[i].id == matName) {
-          $("#Material_Name").html( this.materialsData.materials[i].name);
+          $("#Material_Name").html(this.materialsData.materials[i].name);
           $("#Material_Density").html(this.materialsData.materials[i].density);
           $("#Material_Strength").html(this.materialsData.materials[i].strength);
           $("#Material_Temperature").html(this.materialsData.materials[i].temperature);
@@ -47,11 +44,18 @@ define(['jquery'], function () {
         }
       }
     },
+    toTitleCase: function (str) {
+      return str.replace(/\w\S*/g, function (txt) {
+        return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
+      });
+    },
     setPartsInfo: function (objName) {
+      console.log(objName);
       for (var i = 0; i < this.partsData.jetEngineParts.length; i++) {
         if (this.partsData.jetEngineParts[i].name == objName) {
           this.selectedPartID = objName;
-          $("#partName").html("<h4> " + this.partsData.jetEngineParts[i].name + "</h4>");
+          var partname = this.partsData.jetEngineParts[i].name.replace("_", " ");
+          $("#partName").html("<h4> " + this.toTitleCase(partname) + "</h4>");
           $("#FanCheck").empty();
           $("#FanCheck").css('background-color', '#FFF');
           if (this.selectedMaterial[objName] != null) {

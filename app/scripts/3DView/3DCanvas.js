@@ -1,5 +1,6 @@
 define(['jquery', 'three', 'three-controls'], function () {
   renderer = {
+
     init: function (con) {
       this.setSize(con.width(), con.height());
       this.container = document.createElement('div');
@@ -9,10 +10,12 @@ define(['jquery', 'three', 'three-controls'], function () {
       this.camera.position.z = 500;
       con.append(this.container);
       this.setupControls();
+      this.lookat = this.camera.lookat;
     },
     width: 10,
     height: 10,
     controls: null,
+    lookat: null,
     camera: new THREE.PerspectiveCamera(60, this.width / this.height, 1, 2000),
     scene: new THREE.Scene(),
     tRenderer: new THREE.WebGLRenderer({alpha: true}),
@@ -36,8 +39,7 @@ define(['jquery', 'three', 'three-controls'], function () {
       this.controls.staticMoving = true;
       this.controls.dynamicDampingFactor = 0.3;
       this.controls.keys = [65, 83, 68];
-      this.controls.minDistance = 20;
-      this.controls.maxDistance = 100;
+
     }
   }
 });

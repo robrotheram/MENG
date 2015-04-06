@@ -8,7 +8,7 @@ require.config({
         "angular" : "vendor/angular/angular.min",
         "three": "vendor/threejs/build/three.min",
       "three-controls": "vendor/three.js-controls/src/TrackballControls",
-      "three-tgaloader": "racecar/tgaloader"
+      "three-tgaloader": "3DView/tgaloader"
 
     },
     shim : {
