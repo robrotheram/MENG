@@ -9,6 +9,12 @@ define(["../app",
   function (app, $) {
     app.controller('jetengine', function ($scope) {
       $scope.pageName = "Jet Engine";
+      var height = $("#mainPanelBody").height();
+      height += 55;
+      //alert(height);
+      $("#materialBody").height(height);
+
+
       function init() {
         _3DView.new();
         _3DView.init("#jet");
