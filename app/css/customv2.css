@@ -140,7 +140,7 @@ nav{
 
 @media (min-width: 768px) {
   .materialImg {
-    width: 150px;
+    width: 100px;
 
   }
 }
@@ -191,8 +191,30 @@ table.fixed td, th { overflow: hidden; }
 
 .drop-thing {
   width: 100%;
-  min-height: 160px;
+  position: relative;
+  display: inline-block;
+  vertical-align: top;
+  border: solid;
+  border-radius: 50%;
 }
+
+.drop-thing:before {
+  padding-top: 100%;
+  content: '';
+  display: block;
+}
+
+.drop-thing-text {
+  text-align: center;
+  position: absolute;
+  top: 45%;
+  left: 0;
+  bottom: 0;
+  right: 0;
+}
+
+
+
 
 .table-curved {
   border-collapse: separate;

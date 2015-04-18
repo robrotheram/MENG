@@ -22,7 +22,7 @@
   <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
   <![endif]-->
 
-  <script data-main="scripts/jetengine_main" src="scripts/vendor/requirejs/require.js"></script>
+  <script data-main="scripts/main" src="scripts/vendor/requirejs/require.js"></script>
 
 </head>
 <body>
@@ -41,8 +41,8 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse navbar-left">
           <ul class="nav navbar-nav">
-            <li><a href="jetengine.html">Jet Engine</a></li>
-            <li><a href="racecar.html">Race Car</a></li>
+            <li><a href="#/jetengine">Jet Engine</a></li>
+            <li><a href="#/racecar">Race Car</a></li>
             <li><a data-toggle="modal" data-target="#ABOUTModal"> About</a></li>
             <li><a data-toggle="modal" data-target="#HELPModal">Help</a></li>
 
@@ -52,41 +52,8 @@
     </div>
     </div>
   </nav>
-  <div class="wrapper">
-    <div class="row">
 
-      <div class="col-md-6" style="padding: 10px">
-
-        <div class="panel panel-primary">
-          <div class="panel-heading">
-            <h3 class="panel-title">Jet Engine</h3>
-          </div>
-          <div class="panel-body">
-            <a href="jetengine.html"><img src="images/jetengine.png"
-                                          style="height: 300px; display: block; margin-left: auto;margin-right: auto;"
-                                          class="img-thumbnail img-rounded"></a>
-          </div>
-        </div>
-
-      </div>
-
-
-      <div class="col-md-6" style="padding: 10px">
-
-        <div class="panel panel-primary">
-          <div class="panel-heading">
-            <h3 class="panel-title">Race Car</h3>
-          </div>
-          <div class="panel-body">
-            <a href="racecar.html"><img src="images/racecar.png"
-                                        style="height: 300px; display: block; margin-left: auto;margin-right: auto;"
-                                        class="img-thumbnail img-rounded"></a>
-        </div>
-
-      </div>
-
-
-      </div>
+  <div class="wrapper" ng-view></div>
 </div>
 <!-- /.container -->
 
@@ -96,11 +63,13 @@
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-header" style="background-color: #005f8d; color: #ffffff">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+          aria-hidden="true">&times;</span></button>
         <h4 class="modal-title">Help</h4>
       </div>
       <div class="modal-body">
         <h4>Welcome to the help section.</h4>
+
         <p>Site needs:</p>
         <ul>
           <li>Modern Day Browser</li>
@@ -113,7 +82,7 @@
           <li>Click and drag to rotate the Jet Engine</li>
           <hr/>
           <li>View the Materials Section</li>
-          <li>Click on choose and drag the right material to the correct part </li>
+          <li>Click on choose and drag the right material to the correct part</li>
           <hr/>
           <li>View the Check</li>
           <li>Click and drag the material image to the box under the Jet Engine component</li>
@@ -135,8 +104,9 @@
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-header" style="background-color: #005f8d; color: #ffffff">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" >About</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+          aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">About</h4>
       </div>
       <div class="modal-body">
         Application written by <a href="http://robrotheram.com">Robert Fletcher</a> as part of Computer Science Master
@@ -149,8 +119,6 @@
     </div>
   </div>
 </div>
-
-
 
 
 </body>

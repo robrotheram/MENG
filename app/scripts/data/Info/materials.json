@@ -8,7 +8,7 @@
       "temperature": 6,
       "oxidation": 4,
       "corrosion": 4,
-      "texture_img": "images/metal3.jpg"
+      "texture_img": "images/steel.jpg"
     },
     {
       "id": "nickle",
@@ -18,7 +18,7 @@
       "temperature": 9,
       "oxidation": 9,
       "corrosion": 9,
-      "texture_img": "images/aluminium.jpg"
+      "texture_img": "images/nickle.jpg"
     },
     {
       "id": "titanium",
@@ -28,7 +28,7 @@
       "temperature": 5,
       "oxidation": 5,
       "corrosion": 5,
-      "texture_img": "images/titainum.jpg"
+      "texture_img": "images/titanium.jpg"
     },
     {
       "id": "carbon",
@@ -38,7 +38,7 @@
       "temperature": 2,
       "oxidation": 5,
       "corrosion": 5,
-      "texture_img": "images/carbon-texture.png"
+      "texture_img": "images/carbon.jpg"
     },
     {
       "id": "wood",
@@ -48,7 +48,7 @@
       "temperature": 1,
       "oxidation": 1,
       "corrosion": 1,
-      "texture_img": "images/crate.jpg"
+      "texture_img": "images/wood.jpg"
     }
   ]
 }

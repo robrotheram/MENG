@@ -1,4 +1,4 @@
-define(["jquery",
+define(["../vendor/jquery/dist/jquery.min",
     "angular",
     "jquery-ui",
     '3DView/3DView',

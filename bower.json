@@ -10,6 +10,11 @@
     "three.js-controls": "latest",
     "bootstrap": "latest",
     "fontawesome": "latest",
-    "jqueryui-touch-punch": ""
+    "jqueryui-touch-punch": "",
+    "angular-route": "~1.3.14",
+    "angularAMD": "~0.2.1"
+  },
+  "resolutions": {
+    "angular": "1.3.15"
   }
 }

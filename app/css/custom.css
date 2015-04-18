@@ -290,6 +290,13 @@ hr {
   min-height: 160px;
 }
 
+.drop-thing-inner {
+  border-style: solid;
+  border-width: 5px;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+}
 .table-curved {
   border-collapse: separate;
   border: solid #ddd 1px;

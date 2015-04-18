@@ -1,11 +1,23 @@
 define(['jquery', 'three', '../3DView/3DCanvas', '../3DView/modelManager', 'three-controls', '../3DView/modelinfo'], function () {
 
-  var texture = THREE.ImageUtils.loadTexture('images/metal3.jpg');
+  var texture = THREE.ImageUtils.loadTexture('images/steel.jpg');
   texture.wrapS = texture.wrapT = THREE.RepeatWrapping;
 
   _3DView = {
     renderer: renderer,
     modelInfomation: modelinfo,
+    new: function () {
+      this.modelInfomation.reset();
+      this.models.reset();
+      this.animate = null;
+      this.vector = new THREE.Vector3();
+      this.testnumber = 100;
+      this.raycaster = new THREE.Raycaster();
+      this.outercontainer = null;
+      this.speed = 0.005;
+      this.play = false;
+
+    },
     init: function (containerID) {
       this.outercontainer = $(containerID);
       this.renderer.init($(containerID));
@@ -46,7 +58,7 @@ define(['jquery', 'three', '../3DView/3DCanvas', '../3DView/modelManager', 'thre
       jetEngineArr = _3DView.models.convertToArray();
       intersects = _3DView.raycaster.intersectObjects(jetEngineArr);
       for (var modelID in _3DView.models.models) {
-        _3DView.models.models[modelID].material = modelManager.materialarray[modelID];
+        _3DView.models.models[modelID].material = _3DView.models.modelMaterialArray[modelID]; // new THREE.MeshNormalMaterial();  // modelManager.materialarray[modelID];
       }
       if (intersects.length > 0) {
         _3DView.selectPart(intersects[0].object);

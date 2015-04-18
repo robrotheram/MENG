@@ -6,6 +6,9 @@ require.config({
     "jquery-ui-touch": "vendor/jqueryui-touch-punch/jquery.ui.touch-punch.min",
     "bootstrap": "vendor/bootstrap/dist/js/bootstrap.min",
     "angular": "vendor/angular/angular.min",
+    "angular-route": "vendor/angular-route/angular-route.min",
+    "angularAMD": "vendor/angularAMD/angularAMD.min",
+
     "three": "vendor/threejs/build/three.min",
     "three-controls": "vendor/three.js-controls/src/TrackballControls",
     "three-tgaloader": "3DView/tgaloader"
@@ -19,9 +22,9 @@ require.config({
       exports: "$",
       deps: ['jquery-ui']
     },
-    "angular": {
-      exports: "angular"
-    },
+    'angularAMD': ['angular'],
+    'angular-route': ['angular'],
+
     "bootstrap": {
       deps: ["jquery"]
     },
@@ -29,10 +32,11 @@ require.config({
     "three": {exports: 'THREE'},
     "three-controls": {deps: ['three'], exports: 'THREE'},
     "three-tgaloader": {deps: ['three'], exports: 'THREE'}
-  }
+  },
+  deps: ['app']
 // End of shims
 });
-require(["scripts/jetengine_app.js"]); // End of require
+//require(["scripts/app.js"]); // End of require
 
 
 

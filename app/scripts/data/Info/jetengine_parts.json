@@ -19,14 +19,14 @@
       "description": "The compressor consists of several rows of blades which compress air before combustion. They rotate at high speed, causing high loads and as the air is pressurised, it heats up raising the temperature of the compressor components.",
       "requirements": "Good strength and resistance to fatigue at raised temperatures (although not as hot as turbine). Light weight is an advantage.",
       "texture_img": "images/parts/compresor.png",
-      "correctMat": "titanium"
+      "correctMat": "nickle"
     },
     {
       "name": "combustion",
       "description": "Fuel is burned inside the combustor. These components get very hot and are exposed to an environment which promotes corrosion and oxidation.",
       "requirements": "Stable at high temperatures with good corrosion and oxidation resistance.",
       "texture_img": "images/parts/combusture.png",
-      "correctMat": "nickle"
+      "correctMat": "titanium"
     },
     {
       "name": "turbine",
