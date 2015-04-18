@@ -11,7 +11,6 @@ define(["../app",
       $scope.pageName = "Race Car";
       var height = $("#mainPanelBody").height();
       height += 55;
-      //alert(height);
       $("#materialBody").height(height);
 
       function init() {
