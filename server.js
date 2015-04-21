@@ -6,7 +6,7 @@ var paperboy = require('paperboy'),
   http = require('http'),
   path = require('path');
 
-var webroot = path.join(__dirname, 'app');
+var webroot = path.join(__dirname, 'dist');
 
 http.createServer(function (req, res) {
   var ip = server_ip_address;
