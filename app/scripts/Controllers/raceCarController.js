@@ -7,11 +7,26 @@ define(["../app",
     'three'],
 
   function (app, $) {
+
+    /**
+     * @class racecar
+     * @memberOf angular_module
+     */
+
+
     app.controller('racecar', function ($scope) {
       $scope.pageName = "Race Car";
       var height = $("#mainPanelBody").height();
       height += 55;
       $("#materialBody").height(height);
+
+
+      /**
+       * @name $init
+       * @function init
+       * @memberOf angular_module.racecar
+       * @description Sets up the entire page. Loads in the module and texture. Loads the material list and the custom check section
+       */
 
       function init() {
         _3DView.new();
@@ -95,6 +110,16 @@ define(["../app",
 
       }
 
+
+      /**
+       * @name loadModel
+       * @function loadModel
+       * @memberOf angular_module.racecar
+       * @param {String} filename relative File Path to the model
+       * @description send the relative file path to the model
+       */
+
+
       function loadModel(filename) {
         _3DView.models.loader.load(filename, _3DView.models.meshloader(filename));
       }
@@ -103,6 +128,15 @@ define(["../app",
       _3DView.modelInfomation.materialJsonPath = "scripts/data/Info/materials.json";
       _3DView.modelInfomation.getMaterials("steel");
       _3DView.modelInfomation.getParts("body");
+
+
+      /**
+       * @name loadMaterials
+       * @function loadMaterials
+       * @memberOf angular_module.racecar
+
+       * @description Load the materials for each part of the model
+       */
 
       function loadMaterials() {
         var texture1 = _3DView.models.textureLoader.load('scripts/data/RaceCar/rb0_main.tga');
@@ -120,6 +154,16 @@ define(["../app",
         _3DView.models.materialarray["wheels"] = new THREE.MeshPhongMaterial({color: 0xffffff, map: texture3});
       }
 
+
+
+      /**
+       * @name loadMaterials
+       * @function loadMaterials
+       * @memberOf angular_module.racecar
+
+       * @description Load the required lights for the model
+       */
+
       function setUPLights() {
         _3DView.models.lights['mainLight'] = new THREE.DirectionalLight(0xffffff, 2);
         _3DView.models.lights['mainLight'].position.set(1, 1, 1);
@@ -129,6 +173,12 @@ define(["../app",
 
       init();
       _3DView.animate();
+
+
+      /**
+       * @memberOf angular_module.racecar
+       * Set up the play pause button
+       */
 
       $("#playbtn").click(function (event) {
         _3DView.play = !_3DView.play;
@@ -146,21 +196,44 @@ define(["../app",
         _3DView.renderer.camera.lookat = _3DView.renderer.lookat;
       });
 
-      $("#steel").click(function (event) {
-        _3DView.modelInfomation.setMaterialInfo("Steel");
+
+
+
+
+
+      $(document).on('click', ".dropedIMG", function () {
+        $("#FanCheck").css('background-color', '#FFF');
+        $(this).remove();
+        $("#FanCheck").append('<style>#FanCheck::before{padding-top: 100%;}</style>');
+        $("#FanCheck").append('<style>#FanCheck{border: solid;border-radius:50%; }</style>');
+        $("#FanCheck").html('<span class="drop-thing-text"><h4>Drop Material here</h4></span>');
+
       });
-      $("#nickel").click(function (event) {
-        _3DView.modelInfomation.setMaterialInfo("Nickel superalloy");
-      });
-      $("#titanium").click(function (event) {
-        _3DView.modelInfomation.setMaterialInfo("Titanium alloy");
-      });
-      $("#wood").click(function (event) {
-        _3DView.modelInfomation.setMaterialInfo("Wood");
-      });
-      $("#carbom").click(function (event) {
-        _3DView.modelInfomation.setMaterialInfo("Carbon fibre");
-      });
+
+
+
+
+      /** Depreicated functions below **/
+
+      /*
+
+
+
+       $("#steel").click(function (event) {
+       _3DView.modelInfomation.setMaterialInfo("Steel");
+       });
+       $("#nickel").click(function (event) {
+       _3DView.modelInfomation.setMaterialInfo("Nickel superalloy");
+       });
+       $("#titanium").click(function (event) {
+       _3DView.modelInfomation.setMaterialInfo("Titanium alloy");
+       });
+       $("#wood").click(function (event) {
+       _3DView.modelInfomation.setMaterialInfo("Wood");
+       });
+       $("#carbom").click(function (event) {
+       _3DView.modelInfomation.setMaterialInfo("Carbon fibre");
+       });
 
 
       $("#resetAnswer").click(function (event) {
@@ -199,15 +272,7 @@ define(["../app",
         }
       });
 
-      $(document).on('click', ".dropedIMG", function () {
-        $("#FanCheck").css('background-color', '#FFF');
-        $(this).remove();
-        $("#FanCheck").append('<style>#FanCheck::before{padding-top: 100%;}</style>');
-        $("#FanCheck").append('<style>#FanCheck{border: solid;border-radius:50%; }</style>');
-        $("#FanCheck").html('<span class="drop-thing-text"><h4>Drop Material here</h4></span>');
-
-      });
-
+     */
 
     });
 

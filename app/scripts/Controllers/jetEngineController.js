@@ -7,6 +7,13 @@ define(["../app",
     'three'],
 
   function (app, $) {
+
+    /**
+     * @class jetengine
+     * @memberOf angular_module
+     */
+
+
     app.controller('jetengine', function ($scope) {
       $scope.pageName = "Jet Engine";
       var height = $("#mainPanelBody").height();
@@ -14,9 +21,20 @@ define(["../app",
       $("#materialBody").height(height);
 
 
+      /**
+       * @name $init
+       * @function init
+       * @memberOf angular_module.jetengine
+       * @description Sets up the entire page. Loads in the module and texture. Loads the material list and the custom check section
+       */
+
       function init() {
         _3DView.new();
         _3DView.init("#jet");
+
+        /**
+         * Sets up the cutom animation of the renderer
+         */
         _3DView.animate = function () {
           this.renderer.tRenderer.render(renderer.scene, renderer.camera);
           this.renderer.controls.update();
@@ -99,9 +117,25 @@ define(["../app",
 
       }
 
+      /**
+       * @name loadModel
+       * @function loadModel
+       * @memberOf angular_module.jetengine
+       * @param {String} filename relative File Path to the model
+       * @description send the relative file path to the model
+       */
       function loadModel(filename) {
         _3DView.models.loader.load(filename, _3DView.models.meshloader(filename));
       }
+
+
+      /**
+       * @name loadMaterials
+       * @function loadMaterials
+       * @memberOf angular_module.jetengine
+
+       * @description Load the materials for each part of the model
+       */
 
       function loadMaterials() {
         var texture1 = THREE.ImageUtils.loadTexture('images/steel.jpg');
@@ -151,6 +185,13 @@ define(["../app",
 
       }
 
+      /**
+       * @name loadMaterials
+       * @function loadMaterials
+       * @memberOf angular_module.jetengine
+
+       * @description Load the required lights for the model
+       */
       function setUPLights() {
         _3DView.models.lights['mainLight'] = new THREE.DirectionalLight(0xffffff, 0.5);
         _3DView.models.lights['mainLight'].position.set(0, 1, 0);
@@ -160,6 +201,11 @@ define(["../app",
 
       init();
       _3DView.animate();
+
+      /**
+       * @memberOf angular_module.jetengine
+       * Set up the play pause button
+       */
 
       $("#playbtn").click(function (event) {
         _3DView.play = !_3DView.play;
@@ -171,6 +217,11 @@ define(["../app",
       });
 
 
+      /**
+       * @memberOf angular_module.jetengine
+       * @description Set up the play pause button
+       */
+
       $("#resetbtn").click(function (event) {
         _3DView.renderer.camera.position.x = 150;
         _3DView.renderer.camera.position.y = 50;
@@ -179,6 +230,24 @@ define(["../app",
       });
 
 
+      /**
+       * @memberOf angular_module.jetengine
+       * @description Set up dropdown area
+       */
+      $(document).on('click', ".dropedIMG", function () {
+        $("#FanCheck").css('background-color', '#FFF');
+        $(this).remove();
+        $("#FanCheck").append('<style>#FanCheck::before{padding-top: 100%;}</style>');
+        $("#FanCheck").append('<style>#FanCheck{border: solid;border-radius:50%; }</style>');
+        $("#FanCheck").html('<span class="drop-thing-text"><h4>Drop Material here</h4></span>');
+
+      });
+
+
+      /**
+       * Deprecated functions below
+       */
+      /*
       $("#steel").click(function (event) {
         _3DView.modelInfomation.setMaterialInfo("Steel");
       });
@@ -233,14 +302,7 @@ define(["../app",
       });
 
 
-      $(document).on('click', ".dropedIMG", function () {
-        $("#FanCheck").css('background-color', '#FFF');
-        $(this).remove();
-        $("#FanCheck").append('<style>#FanCheck::before{padding-top: 100%;}</style>');
-        $("#FanCheck").append('<style>#FanCheck{border: solid;border-radius:50%; }</style>');
-        $("#FanCheck").html('<span class="drop-thing-text"><h4>Drop Material here</h4></span>');
-
-      });
+      */
 
 
     });

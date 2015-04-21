@@ -1,11 +1,22 @@
 define(['jquery', 'three', '../3DView/3DCanvas', '../3DView/modelManager', 'three-controls', '../3DView/modelinfo'], function () {
 
+  /**
+   * @class _3DView
+   * @memberOf 3DView
+   */
+
   var texture = THREE.ImageUtils.loadTexture('images/steel.jpg');
   texture.wrapS = texture.wrapT = THREE.RepeatWrapping;
 
   _3DView = {
     renderer: renderer,
     modelInfomation: modelinfo,
+    /**
+     * @name new
+     * @function new
+     * @memberOf 3DView._3DView
+     * @description Reset the _3DView with defualt values. Call before setting up the canvas
+     */
     new: function () {
       this.modelInfomation.reset();
       this.models.reset();
@@ -18,6 +29,14 @@ define(['jquery', 'three', '../3DView/3DCanvas', '../3DView/modelManager', 'thre
       this.play = false;
 
     },
+    /**
+     * @name init
+     * @function init
+     * @memberOf 3DView._3DView
+     * @description Sets up the canvas with the id of the div that the 3D view should be
+     * @param {string} containerID div id of the container ID
+     *
+     */
     init: function (containerID) {
       this.outercontainer = $(containerID);
       this.renderer.init($(containerID));
@@ -36,9 +55,24 @@ define(['jquery', 'three', '../3DView/3DCanvas', '../3DView/modelManager', 'thre
     outercontainer: null,
     speed: 0.005,
     play: false,
+
+    /**
+     * @name load
+     * @function load
+     * @memberOf 3DView._3DView
+     * @description call the load function in model
+     *
+     */
     load: function () {
       this.models.load(this.renderer.scene);
     },
+    /**
+     * @name reset
+     * @function reset
+     * @memberOf 3DView._3DView
+     * @description reset the camera to default positions
+     *
+     */
     reset: function () {
       this.play = false;
       this.renderer.camera.position.x = 150;
@@ -46,6 +80,13 @@ define(['jquery', 'three', '../3DView/3DCanvas', '../3DView/modelManager', 'thre
       this.renderer.camera.position.z = 150;
     },
     selectPart: null,
+    /**
+     * @name onSelectPart
+     * @function onSelectPart
+     * @memberOf 3DView._3DView
+     * @description Called when there is a mouse click on the container. Calculates relative mosuse position in 3D space then uses THREE.RayCaster to get list of objects that the user could click on then sends the top most one the selectpart function
+     * @param {Mouse}event Mouse Event
+     */
     onSelectPart: function (event) {
       var mouse = {x: 0, y: 0};
       mouse.x = ((event.clientX - _3DView.outercontainer.offset().left) / _3DView.outercontainer.width() ) * 2 - 1;

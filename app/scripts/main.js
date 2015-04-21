@@ -1,3 +1,4 @@
+/** @namespace */
 require.config({
   baseUrl: "scripts",
   paths: {
@@ -36,7 +37,7 @@ require.config({
   deps: ['app']
 // End of shims
 });
-//require(["scripts/app.js"]); // End of require
+
 
 
 
