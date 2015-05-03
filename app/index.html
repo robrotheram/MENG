@@ -41,10 +41,10 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse navbar-left">
           <ul class="nav navbar-nav">
-            <li class="active"><a href="#/">Jet Engine</a></li>
-            <li><a href="#contact">Race Car</a></li>
-            <li><a href="#contact" data-toggle="modal" data-target="#ABOUTModal"> About</a></li>
-            <li><a href="#contact" data-toggle="modal" data-target="#HELPModal">Help</a></li>
+            <li><a href="#/jetengine">Jet Engine</a></li>
+            <li><a href="#/racecar">Race Car</a></li>
+            <li><a data-toggle="modal" data-target="#ABOUTModal"> About</a></li>
+            <li><a data-toggle="modal" data-target="#HELPModal">Help</a></li>
 
           </ul>
         </div><!--/.nav-collapse -->
@@ -52,142 +52,8 @@
     </div>
     </div>
   </nav>
-  <div class="wrapper">
-    <div class="row"style="height:100%;padding:0px; margin:0px; background-color:#000">
-      <div class="col-lg-2" style="height:100%; padding:5px;">
-        <table class="contact-table borderless table table-curved" style="height: 96%; margin-top:10px; background-color: #f5f5f5">
-          <col width="70%">
-          <col width="25%">
-          <tr>
-            <td><b>Steel</b></td>
-            <td>
-              <img  src="images/metal3.jpg"
-                    id="steel"
-                    onclick="jetEngineView.modelInfomation.setMaterialInfo(this.id);"
-                    class="Steel scrollToTOP img img-circle img-responsive img-thumbnail materialImg"
-                />
-            </td>
-          </tr>
-          <tr>
-            <td><b>Nickle</b></td>
-            <td>
-              <img  src="images/aluminium.jpg"
-                    id="nickle"
-                    onclick="jetEngineView.modelInfomation.setMaterialInfo(this.id);"
-                    class="Wood scrollToTOP img img-circle img-responsive img-thumbnail materialImg"/>
-            </td>
-          </tr>
-          <tr>
-            <td><b>Titanium</b></td>
-            <td>
-              <img  src="images/titainum.jpg"
-                    id="titanium"
-                    onclick="jetEngineView.modelInfomation.setMaterialInfo(this.id);"
-                    class="scrollToTOP img img-circle img-responsive img-thumbnail materialImg"/>
-            </td>
-          </tr>
-          <tr>
-            <td><b>Wood</b></td>
-            <td>
-              <img  src="images/crate.jpg"
-                    id="wood"
-                    onclick="jetEngineView.modelInfomation.setMaterialInfo(this.id);"
-                    class="scrollToTOP img img-circle img-responsive img-thumbnail materialImg"/>
-            </td>
-          </tr>
-          <tr>
-            <td><b>Carbon Fibre</b></td>
-            <td>
-              <img  src="images/carbon-texture.png"
-                    id="carbon"
-                    onclick="jetEngineView.modelInfomation.setMaterialInfo(this.id);"
-                    class="scrollToTOP img img-circle img-responsive img-thumbnail materialImg"/>
-            </td>
-          </tr>
-          <tr>
-            <th style="text-align: center" colspan="2">Material: <span id="Material_Name"></span> </th>
-          </tr>
-          <tr>
-            <td>Density</td>
-            <td style="text-align: center"  id="Material_Density"></td>
-          </tr>
-          <tr>
-            <td>Strength</td>
-            <td style="text-align: center" id="Material_Strength"></td>
-          </tr>
-          <tr>
-            <td>High temperature capability</td>
-            <td style="text-align: center" id="Material_Temperature"></td>
-          </tr>
-          <tr>
-            <td>Oxidation resistance</td>
-            <td style="text-align: center" id="Material_Oxidation"></td>
-          </tr>
-          <tr>
-            <td>Corrosion resistance</td>
-            <td style="text-align: center" id="Material_Corrosion"></td>
-          </tr>
-        </table>
-      </div>
-      <div class="col-lg-10" style="height:100%; padding:5px;">
-        <div class="panel panel-default" style="height:96%;  margin-top:10px;">
-          <div class="panel-heading">
-            <h3 class="panel-title"><i class="fa fa-fighter-jet fa-fw"></i> Jet Engine</h3>
-          </div>
-          <div class="panel-body" style="display: table;
-                                height: 94%; width:100%">
-            <div class="content">
-              <div id="jet" style="background-color: #708090;min-height: 350px;" class="webgl img-thumbnail img-responsive"></div>
-            </div>
-            <div class="footer">
-              <div class="col-sm-3">
-                <button type="submit" id="playbtn" class="btn btn-primary cust-buton">Play</button>
-              </div>
-              <div class="col-sm-9" style="padding-left:10px;">
-                <table style="margin-top:5px;" width="100%" border="0">
-                  <colgroup>
-                    <col span="1" style="width: 15%;">
-                    <col span="1" style="width: 85%;">
-                  </colgroup>
-                  <tr>
-                    <td>Thrust:</td>
-                    <td>
-                      <div id="slider"></div>
-                    </td>
-                  </tr>
-                </table>
-              </div>
-              <br/>
-              <br/>
-              <table border="0" class="table table-bordered">
-                <!--<col width="15%">-->
-                <col width="20%">
-                <col width="10%">
-                <col width="75%">
-                <tr>
-                  <!-- <th rowspan="4" id="parIMG"></th>-->
-                  <th rowspan="3">
-                    <div id="FanCheck" class="drop-thing img-thumbnail"></div>
-                  </th>
-                  <th colspan="2" id="partName" class="text-center">
-                    <h4>Part</h4>
-                  </th>
-                </tr>
-                <tr>
-                  <td>Description</td>
-                  <td id="PartDesc"></td>
-                </tr>
-                <tr>
-                  <td>Material Requirements</td>
-                  <td id="PartRequirement"></td>
-                </tr>
-              </table>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+
+  <div class="wrapper" ng-view></div>
 </div>
 <!-- /.container -->
 
@@ -197,11 +63,13 @@
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-header" style="background-color: #005f8d; color: #ffffff">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+          aria-hidden="true">&times;</span></button>
         <h4 class="modal-title">Help</h4>
       </div>
       <div class="modal-body">
         <h4>Welcome to the help section.</h4>
+
         <p>Site needs:</p>
         <ul>
           <li>Modern Day Browser</li>
@@ -214,7 +82,7 @@
           <li>Click and drag to rotate the Jet Engine</li>
           <hr/>
           <li>View the Materials Section</li>
-          <li>Click on choose and drag the right material to the correct part </li>
+          <li>Click on choose and drag the right material to the correct part</li>
           <hr/>
           <li>View the Check</li>
           <li>Click and drag the material image to the box under the Jet Engine component</li>
@@ -236,8 +104,9 @@
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-header" style="background-color: #005f8d; color: #ffffff">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" >About</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+          aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">About</h4>
       </div>
       <div class="modal-body">
         Application written by <a href="http://robrotheram.com">Robert Fletcher</a> as part of Computer Science Master
@@ -250,8 +119,6 @@
     </div>
   </div>
 </div>
-
-
 
 
 </body>

@@ -1,0 +1,74 @@
+<div class="row" style="height:100%;padding:0px; padding-left: 15px; padding-right: 15px; margin:0px;">
+  <div class="col-lg-3" style="height:100%; padding:5px;">
+
+
+    <div class="panel panel-default" style=" min-height:96%;
+	height:96%;  margin-top:10px;">
+      <div class="panel-heading clearfix">
+        <h3 class="panel-title pull-left">Materials </h3>
+      </div>
+      <div id="materialBody" class="panel-body" style="padding: 0;">
+
+        <div style="-webkit-flex: 1 1 auto;
+             flex: 1 1 auto;
+             overflow: auto;
+             height:0;
+        min-height:100%;
+        ">
+
+          <table id="materialTable" class="table">
+          <col width="30%">
+          <col width="20%">
+          <col width="50%">
+          <tr></tr>
+        </table>
+        </div>
+      </div>
+    </div>
+
+
+  </div>
+  <div class="col-lg-9" style="height:100%; padding:5px;">
+    <div class="panel panel-default" style="height:96%;  margin-top:10px;">
+      <div class="panel-heading clearfix">
+        <h3 class="panel-title pull-left"><i class="fa fa-fighter-jet fa-fw"></i>{{pageName}}</h3>
+
+        <div class="btn-group pull-right" role="group">
+          <button type="button" id="playbtn" class="btn btn-primary">Play</button>
+          <button type="button" id="resetbtn" class="btn btn-primary">Rest Camera</button>
+        </div>
+      </div>
+      <div id="mainPanelBody" class="panel-body" style="display: table;  height: 90%; width:100%;">
+        <div class="content">
+          <div id="jet" style="background-color: #708090;min-height: 350px;"
+               class="webgl img-thumbnail img-responsive"></div>
+        </div>
+        <div class="content" style="height:20px;"></div>
+        <div class="footer">
+          <table border="0" class="table table-bordered table-curved" style="background-color: #ffffff;">
+            <col width="15%">
+            <col width="10%">
+            <col width="80%">
+            <tr>
+              <th rowspan="3">
+                <div id="FanCheck" class="drop-thing img-thumbnail"></div>
+              </th>
+              <th colspan="2" id="partName" class="text-center">
+                <h4>Part</h4>
+              </th>
+            </tr>
+            <tr>
+              <td>Description</td>
+              <td id="PartDesc"></td>
+            </tr>
+            <tr>
+              <td>Material Requirements</td>
+              <td id="PartRequirement"></td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
