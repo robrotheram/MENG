@@ -6,7 +6,7 @@ define(['jquery', 'three', '../3DView/3DCanvas', '../3DView/modelManager', 'thre
    */
 
   var texture = THREE.ImageUtils.loadTexture('images/steel.jpg');
-  texture.wrapS = texture.wrapT = THREE.RepeatWrapping;
+  //texture.wrapS = texture.wrapT = THREE.RepeatWrapping;
 
   _3DView = {
     renderer: renderer,
